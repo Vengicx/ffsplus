@@ -42,6 +42,12 @@
                                 <p>Tamanho</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=cadastro&pg=pizza" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Pizza</p>
+                            </a>
+                        </li>
                     </ul>
                 </li><!-- fim do Charts -->
                 <li class="nav-item has-treeview">
