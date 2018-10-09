@@ -1,3 +1,12 @@
+<?php
+
+    $usuarioLogado = "";
+
+    if(isset($_SESSION["sistema"]["nome"])){
+        $usuarioLogado = $_SESSION["sistema"]["nome"];
+    }
+
+?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
@@ -10,7 +19,7 @@
       <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">Usuário Logado</a>
+                <a href="#" class="d-block">Logado Como: <?php echo "$usuarioLogado";?></a>
             </div>
         </div>
       <!-- Sidebar Menu -->
@@ -46,6 +55,12 @@
                             <a href="home.php?fd=cadastro&pg=pizza" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Pizza</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=cadastro&pg=materiaprima" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Matéria-Prima</p>
                             </a>
                         </li>
                     </ul>

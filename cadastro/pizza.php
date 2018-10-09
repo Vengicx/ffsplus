@@ -12,8 +12,7 @@
 </style>
     <h1 class="text-center">Cadastro de Nova Pizza</h1>
     
-
-    <div class="row ">
+    <div class="row">
     <form name="materiaprimas" action="home.php?fd=salvar&pg=pizza" method="post">
         <div class="card carrinho" style="width: 20em;">
             <div class="card-body">
