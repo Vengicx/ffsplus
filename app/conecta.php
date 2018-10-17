@@ -1,6 +1,6 @@
 <?php
     $localhost = "127.0.0.1";
-    $database = "testetcc";
+    $database = "fasterfoodservice";
     $user = "root";
     $password = "";
 

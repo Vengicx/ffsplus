@@ -12,25 +12,13 @@
 	}//fim da funcao
 
 	function getMateria($id, $quantidade){
-
 		$id = $_POST["codigo"];
 
     	foreach ($codigo as $values){
-
 	    	echo $values;
 	    	echo "<br>";
-
-    }
-
-
+    	
+    	}
 	}
-
-
-
-
-
-
-
-
 
 ?>

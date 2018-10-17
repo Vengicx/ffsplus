@@ -1,3 +1,13 @@
+<?php
+    session_cache_expire(5);
+    session_start();
+
+    if (!isset($_SESSION["sistema"]["id"])) {
+        header("Location: index.php");
+        exit;
+        
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,12 +39,13 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+  <?php 
+      //Navbar 
+      include "topMenu.php";
 
-  <!-- Navbar -->
-  <?php include "topMenu.php" ?>
-
-  <!-- Main Sidebar Container -->
-  <?php include "leftMenu.php"; ?>
+      //Main Sidebar Container 
+      include "leftMenu.php"; 
+  ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

@@ -12,7 +12,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-power-off"></i> Sair</a>
+        <a class="nav-link" href="sair.php"><i class="fa fa-power-off"></i> Sair</a>
       </li>
     </ul>
   </nav>

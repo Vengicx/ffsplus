@@ -1,9 +1,7 @@
 <?php
-
-    $usuarioLogado = "";
-
     if(isset($_SESSION["sistema"]["nome"])){
         $usuarioLogado = $_SESSION["sistema"]["nome"];
+
     }
 
 ?>
@@ -19,7 +17,7 @@
       <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" class="d-block">Logado Como: <?php echo "$usuarioLogado";?></a>
+                <a href="#" onblur="limitarTexto(<?=$usuarioLogado?>, 5)">Logado Como: <?php echo $usuarioLogado;?></a><!-- arrumar-->
             </div>
         </div>
       <!-- Sidebar Menu -->
@@ -90,9 +88,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="home.php?fd=listas&pg=usuario" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>...</p>
+                                <p>Usuário</p>
                             </a>
                         </li>
                     </ul>
