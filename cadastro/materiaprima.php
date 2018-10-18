@@ -1,7 +1,7 @@
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Matéria-Prima</h3>
 </div>
-<form role="form">
+<form role="form" style="padding: 50px;">
         <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" class="form-control" placeholder="Digite o nome">
@@ -21,6 +21,14 @@
             </div>
         </div><!-- fim do row -->
     <div class="card-footer text-center mt-5">
-        <button type="submit" class="btn btn-primary">Cadastrar/Alterar</button>
+        <?php 
+            if(isset($_GET["id"])){
+                $btnForm = "Alterar";
+            }else{
+                $btnForm = "Cadastrar";
+            }
+
+        ?>
+            <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
     </div>
 </form>

@@ -35,8 +35,6 @@
 		}
 		
 		$senha = password_hash($senha, PASSWORD_DEFAULT);
-		
-		include "./app/conecta.php";
 
 		if(empty($nome)){
 			echo "<script>alert('Preencha o nome');history.back();</script>";
@@ -61,7 +59,7 @@
 		include "./app/conecta.php";
 		
 		if(empty($id)){
-			$sql = "insert into usuario (nome, login, senha, email, ativo, tipoUsuario) values (?, ?, ?, ?, ?, ?)";
+			$sql = "insert into usuario (nome, login, senha, email, status, tipoUsuario) values (?, ?, ?, ?, ?, ?)";
 			$query = $pdo->prepare($sql);
 			$query->bindParam(1, $nome);
 			$query->bindParam(2, $login);
@@ -72,10 +70,9 @@
 
 			if($query->execute()){
 				echo "<script>alert('Usuário cadastrado com sucesso');
-							  location.replace('home.php?fd=lists&pg=usuario');
+							  location.replace('home.php?fd=listas&pg=usuario');
 					  </script>";
 				
-
 			}else{
 				echo "<script>alert('Erro ao cadastrar usuário');history.back();</script>";
 				exit;
@@ -93,7 +90,7 @@
 
 			if($query->execute()){
 				echo "<script>alert('Usuário modificado com sucesso');
-							  location.replace('home.php?fd=lists&pg=usuario');
+							  location.replace('home.php?fd=listas&pg=usuario');
 					  </script>";
 			}else{
 				echo "<script>alert('Erro ao modificar usuário');history.back();</script>";

@@ -13,7 +13,7 @@
     <h1 class="text-center">Cadastro de Nova Pizza</h1>
     
     <div class="row">
-    <form name="materiaprimas" action="home.php?fd=salvar&pg=pizza" method="post">
+    <form name="materiaprimas" action="home.php?fd=salvar&pg=pizza" method="post" style="padding: 50px;">
         <div class="card carrinho" style="width: 20em;">
             <div class="card-body">
                 <h5 class="card-title">Cadastro de Novo Produto</h5>

@@ -6,19 +6,12 @@
 
     $id = $nome = $login = $senha = $email = $tipoUsuario = $ativo = "";
 
-    $labelLogin = "readonly";
-    $labelSenha = "placeholder=\"Digite uma nova senha (Se necessário)\"";
+    $labelLogin = $labelId = "readonly";
 
     if(isset($_GET["id"])){
         $id = trim($_GET["id"]);
 
-        echo 
-        "<script>
-            let labelID = $id;
-
-            labelID = document.style.display = \"none\";
-
-        </script>";
+        $labelSenha = "placeholder=\"Digite uma nova senha (Se necessário)\"";
 
         include "./app/conecta.php";
 
@@ -32,22 +25,23 @@
                 $login = $dados->login;
                 $email = $dados->email;
                 $tipoUsuario = $dados->tipoUsuario;
-                $ativo = $dados->ativo;
+                $status = $dados->status;
         }
 
-    }else{
+    }else{//se nao receber o id pelo GET
         $labelLogin = "required";
-        $labelSenha = "required placeholder=\"Digite sua senha\"";
+        $labelSenha = "required placeholder=\"Digite uma senha\"";
+
     }
 
 ?>
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Usuário</h3>
 </div>
-<form method="post" action="home.php?fd=salvar&pg=usuario">
+<form method="post" action="home.php?fd=salvar&pg=usuario" class="form-ffs" style="padding: 50px;">
     <div class="form-group">
         <label for="id">ID: </label>
-        <input type="text" name="id" class="form-control" id="labelID" value="<?=$id?>">
+        <input type="text" name="id" <?=$labelId?> class="form-control" id="labelID" value="<?=$id?>">
     </div>
     <div class="form-group">
         <label for="nome">Nome:</label>
@@ -92,18 +86,21 @@
             </div>
         </div>
     </div><!-- fim do row-->
-    <div class="card-footer">
-        <button type="submit" class="btn btn-primary">Cadastrar/Alterar</button>
+    <div class="card-footer text-center mt-5">
+        <?php 
+            if(isset($_GET["id"])){
+                $btnForm = "Alterar";
+            }else{
+                $btnForm = "Cadastrar";
+            }
+
+        ?>
+            <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
     </div>
 </form>
 <script>
-    let labelID = document.getElementById('LabelID').style.display = "block"; //em construção
-
-    //verifica se o corpo já foi carregado
-    $(document).ready(function(){
-        //selecionar a opcao SIM ou NAO do ativo
-        $("#ativo").val('<?=$ativo;?>');
-    })
-
+    window.onload=()=>{
+        document.getElementById("tipoUsuario").selectedIndex = "<?=$tipoUsuario?>";
+    }
 
 </script>

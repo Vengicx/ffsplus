@@ -90,7 +90,13 @@
                         <li class="nav-item">
                             <a href="home.php?fd=listas&pg=usuario" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>Usuário</p>
+                                <p>Usuários</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=listas&pg=produto" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Produtos</p>
                             </a>
                         </li>
                     </ul>
