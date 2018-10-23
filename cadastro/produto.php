@@ -4,7 +4,6 @@
         exit;
     }
 
-    $labelId = "readonly";
     $labelQtd = "";
 
     $id = $nome = $precoCompra = $precoVenda = $quantidade = "";
@@ -28,8 +27,6 @@
                 $labelQtd = "readonly";
         }
     }
-
-
 ?>
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Produto</h3>
@@ -37,7 +34,7 @@
 <form method="post" action="home.php?fd=salvar&pg=produto" style="padding: 50px;">
         <div class="form-group">
             <label for="nome">ID:</label>
-            <input type="text" class="form-control" <?=$labelId?> name="id" value="<?=$id?>">
+            <input type="text" class="form-control" readonly name="id" value="<?=$id?>">
             <br>
             <label for="nome">Nome:</label>
             <input type="text" class="form-control" name="nome" placeholder="Digite o nome do Produto" value="<?=$nome?>">

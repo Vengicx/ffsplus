@@ -99,6 +99,18 @@
                                 <p>Produtos</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=listas&pg=materiaprima" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Matéria-Prima</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=listas&pg=tamanho" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Tamanhos</p>
+                            </a>
+                        </li>
                     </ul>
                 </li><!-- listas -->
                 <li class="nav-item has-treeview">

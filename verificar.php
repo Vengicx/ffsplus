@@ -54,7 +54,7 @@
 			if(empty($dados->id)){
 				echo "<script>alert('Usuário não encontrado');history.back();</script>";
 
-			}elseif($dados->status != "1"){
+			}elseif($dados->status != 1){
 				echo "<script>alert('Este usuário não está ativo');history.back();</script>";
 
 			}elseif(!password_verify($senha, $dados->senha)){

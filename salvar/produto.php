@@ -1,5 +1,6 @@
 <?php
 	$id = $nome = $precoCompra = $precoVenda = $quantidade = "";
+	
 	$tipoProduto = 2;
 
 	if($_POST){	
@@ -13,14 +14,20 @@
 
 		if(isset($_POST["precoCompra"])){
 			$precoCompra = trim ($_POST["precoCompra"]);
+			$precoCompra = str_replace(",", ".", $precoCompra);
 		}
 
 		if(isset($_POST["precoVenda"])){
 			$precoVenda = trim ($_POST["precoVenda"]);
+			$precoVenda = str_replace(",", ".", $precoVenda);
 		}
 
 		if(isset($_POST["quantidade"])){
 			$quantidade = trim ($_POST["quantidade"]);
+			if($quantidade <= 0){
+				echo "<script>alert('Impossivel cadastrar estoque negativo');history.back();</script>";
+				exit;
+			}
 		}
 
 		include "./app/conecta.php";
@@ -66,7 +73,6 @@
 			$consulta->bindParam(':precoVenda', $precoVenda);
 			$consulta->bindParam(':quantidade', $quantidade);
 			$consulta->bindParam(':tipoProduto', $tipoProduto);
-			var_dump($consulta);
 
 		}else{//fim do empty id
 			$sql = "UPDATE produto SET nome = :nome, precoCompra = :precoCompra, precoVenda = :precoVenda WHERE id = :id";
@@ -77,9 +83,15 @@
 			$consulta->bindParam(':id', $id);
 
 		}//fim do else do empty id
+		
+		if(empty($id)){
+			$alert = "Adicionado";
+		}else{
+			$alert = "Modificado"
+		}
 
 		if($consulta->execute()){
-			echo "<script>alert('Produto inserido/modificado com sucesso');
+			echo "<script>alert('Produto $alert com sucesso');
 					location.replace('home.php?fd=listas&pg=produto');
 				  </script>";
 
