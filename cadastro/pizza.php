@@ -13,7 +13,7 @@
     <h1 class="text-center">Cadastro de Nova Pizza</h1>
     
     <div class="row">
-    <form name="materiaprimas" action="home.php?fd=salvar&pg=pizza" method="post" style="padding: 50px;">
+    <form name="materiaprimas" action="home.php?fd=salvar&pg=pizza" method="post">
         <div class="card carrinho" style="width: 20em;">
             <div class="card-body">
                 <h5 class="card-title">Cadastro de Novo Produto</h5>
@@ -49,7 +49,7 @@
     require_once "./app/conecta.php";
     require_once "./app/funcoes.php";
 
-    $consulta = $pdo->prepare("SELECT * FROM materiaprima WHERE tipoProduto = 2 order by nome");
+    $consulta = $pdo->prepare("SELECT * FROM materiaprima order by nome");
     $consulta->execute();
 
     while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
@@ -57,22 +57,19 @@
         $nome = $dados->nome;
         $quantidade = $dados->quantidade;
         $precoCompra = $dados->precoCompra;
-        $precoVenda = $dados->precoVenda;
-        $tipoProduto = $dados->tipoProduto;
 
         $titulo = $nome;
-        $nome = limitarTexto($nome, 16);
+        $nome = limitarTexto($nome, 17);
 
 
-        echo "<div class='card materia-prima col-md-2' >
+        echo "<div class='card materia-prima col-md-3' >
                   <div class='card-body'>
                       <h5 class='card-title' title='$titulo'>$nome</h5>
                       <p class='card-text'>Custo: R$ $precoCompra </p>
-                      <p class='card-text'>Em Estoque: $quantidade </p>
-                      
+                      <p class='card-text'>Em Estoque: $quantidade </p> 
                       <div data-toggle='buttons'>
                           <label class='btn btn-primary'>
-                              <input type='checkbox' autocomplete='off' name='codigo[]' value='$id'> Adicionar
+                              <input type='checkbox' autocomplete='off' name='id[]' value='$id'> Adicionar
                           </label>
                       </div>
                   </div>
@@ -80,7 +77,7 @@
     
     }
 
-?>
-    
+?> 
+    <button type="submit" class="btn btn-success">GO!</button> 
     </form>
     </div>

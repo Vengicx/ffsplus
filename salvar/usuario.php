@@ -59,7 +59,8 @@
 		include "./app/conecta.php";
 		
 		if(empty($id)){
-			$sql = "INSERT INTO usuario (nome, login, senha, email, status, tipoUsuario) VALUES (?, ?, ?, ?, ?, ?)";
+			$sql = "INSERT INTO usuario (nome, login, senha, email, status, tipoUsuario) VALUES (:nome, :login, :senha, :email, :status, :tipoUsuario)";
+			$query = $pdo->prepare($sql);
 			$query->bindParam(':nome', $nome);
 			$query->bindParam(':senha', $senha);
 			$query->bindParam(':email', $email);
@@ -80,20 +81,21 @@
 
 		}
 
-			if(empty($id)){
-				$alert = "Adicionado";
-			}else{
-				$alert = "Modificado"
-			}
+		if(empty($id)){
+			$alert = "Adicionado";
+		}else{
+			$alert = "Modificado";
+		}
 
-			if($query->execute()){
-				echo "<script>alert('Usuário $alert com sucesso');
-							  location.replace('home.php?fd=listas&pg=usuario');
-					  </script>";
-			}else{
-				echo "<script>alert('Erro ao modificar usuário');history.back();</script>";
-				exit;
-			}
+		if($query->execute()){
+			echo "<script>alert('Usuário $alert com sucesso');
+					location.replace('home.php?fd=listas&pg=usuario');
+				</script>";
+
+		}else{
+			echo "<script>alert('Erro ao modificar usuário');history.back();</script>";
+			exit;
+		}
 
 	}else{
 		header("Location: home.php");

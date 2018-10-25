@@ -87,7 +87,7 @@
 		if(empty($id)){
 			$alert = "Adicionado";
 		}else{
-			$alert = "Modificado"
+			$alert = "Modificado";
 		}
 
 		if($consulta->execute()){
