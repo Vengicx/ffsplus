@@ -1,11 +1,10 @@
 <?php
 
-    $id = $nome = $login = $senha = $email = $tipoUsuario = $ativo = $endereco = $cpf = $cep = "";
+    $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = "";
+    $labelId = "";
 
     if(isset($_GET["id"])){
-        $id = trim($_GET["id"]);
-
-        $labelSenha = "disabled";
+        $id = trim($_GET["id"]);  
 
         include "./app/conecta.php";
 
@@ -24,17 +23,17 @@
                 $cep = $dados->cep;
                 $rg = $dados->rg;
 
+                $labelId = "readonly";
+                $labelSenha = "disabled";
         }
-
     }else{//se nao receber o id pelo GET
         $labelSenha = "required placeholder=\"Digite uma senha\"";
-        $labelLogin = $labelId = "readonly";
 
     }
 
 ?>
 <div class="card-header">
-    <h3 class="card-title text-center">Cadastro de Usuário</h3>
+    <h3 class="card-title text-center">Cadastro de Cliente</h3>
 </div>
 <form method="post" action="home.php?fd=salvar&pg=cliente" style="padding: 50px;">
     <div class="form-group">
@@ -51,16 +50,16 @@
     </div>
     <div class="form-group">
         <label for="senha">Senha:</label>
-        <input type="password" name="senha" class="form-control" <?=$labelSenha?> value="<?=$senha?>">
+        <input type="password" name="senha" class="form-control" <?=$labelSenha?>>
     </div>
     <div class="row">
         <div class="form-group col-md-6">
             <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" class="form-control" placeholder="Digite o CPF" value="<?=$cep?>">
+            <input type="text" name="cpf" class="form-control" placeholder="Digite o CPF" value="<?=$cpf?>">
         </div>
         <div class="form-group col-md-6">
             <label for="rg">RG:</label>
-            <input type="text" name="rg" class="form-control" placeholder="Digite o CPF" value="<?=$cep?>">
+            <input type="text" name="rg" class="form-control" placeholder="Digite o RG" value="<?=$rg?>">
         </div>
     </div>
     <div class="row">
@@ -81,6 +80,10 @@
         <label for="endereco">Endereço:</label>
         <input type="text" name="endereco" class="form-control" placeholder="Digite o endereço" value="<?=$endereco?>">
     </div>
+      <div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="text" name="telefone" class="form-control" placeholder="Digite o telefone" value="<?=$telefone?>">
+    </div>
     <div class="form-group">
         <label for="cep">CEP:</label>
         <input type="text" name="cep" class="form-control" placeholder="Digite o CPF" value="<?=$cep?>">
@@ -99,6 +102,17 @@
             <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
     </div>
 </form>
+<?php
+    if(isset($_GET["id"])){
+      echo "<script>window.onload=()=>{
+          document.getElementById('estado').selectedIndex = '<?=$estado?>';
+          document.getElementById('cidade').selectedIndex = '<?=$cidade?>';
+        }</script>";
+    }
+
+
+
+?>
 <script type="text/javascript"> 
     var estados = [];
 
@@ -181,6 +195,5 @@
           loadCidades(target, $(this).val());
         }
       });
-    }, false);
-           
+    }, false);        
 </script>   

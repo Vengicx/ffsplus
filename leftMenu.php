@@ -106,6 +106,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="home.php?fd=listas&pg=cliente" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Clientes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="home.php?fd=listas&pg=materiaprima" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Matéria-Prima</p>

@@ -34,7 +34,20 @@
     		}
     	}
 
-    	//ver se ta empty
+    	if(empty($nome)){
+            echo "<script>alert('Digite o nome da matéria prima');history.back();</script>";
+            exit;
+
+        }elseif(empty($precoCompra)){
+            echo "<script>alert('Digite o preço de compra');history.back();</script>";
+            exit;
+        }elseif(empty($precoUnidade)){
+            echo "<script>alert('O preço da unidade não foi calculado');history.back();</script>";
+            exit;
+        }elseif(empty($qtdPedacos)){
+            echo "<script>alert('Digite a quantidade dividida da matéria');history.back();</script>";
+            exit;
+        }
 
     	include "app/conecta.php";
 
