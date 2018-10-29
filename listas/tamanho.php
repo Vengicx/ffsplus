@@ -3,6 +3,8 @@
 		echo "Acesso negado";
 		exit;
 	}
+
+	$tela = $_GET["pg"];
 ?>
 	<h1 class="text-center">Lista de Tamanhos</h1>
 	<br>
@@ -37,9 +39,23 @@
 				<td>$nome</td>
 				<td>$qtdPedacos</td>
 				<td>$qtdSabores</td>
-				<td><a class='btn btn-success' href='home.php?fd=cadastro&pg=tamanho&id=$id'><i class='fa fa-pencil'></i></a></td>
+				<td>
+					<a class='btn btn-success' href='home.php?fd=cadastro&pg=tamanho&id=$id'><i class='fa fa-pencil'></i></a>
+					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+				</td>
 			  </tr>";
 
 	}
 ?>
 	</table>
+<script>	
+	function excluir(id,nome) {
+		//pergunta e confirmar
+		if ( confirm( "Deseja realmente excluir "+nome+" ? ") ) {
+			//mandar excluir
+			link = "home.php?fd=excluir&pg=excluircadastro&tela=<?=$tela?>&id="+id;
+			//chamar o link
+			location.href = link;
+		}
+	}
+</script>

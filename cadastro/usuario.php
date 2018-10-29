@@ -65,7 +65,6 @@
                 <label for="tipoUsuario">Tipo Usuário:</label>
                 <select name="tipoUsuario" id="tipoUsuario" multiple class="form-control" required data-parsley-required-message="Selecione uma opção" value="<?=$tipoUsuario?>">
                     <option value="2">Garçom</option>
-                    <option value="3">Cliente</option>
                     <option value="4">Caixa</option>
                     <option value="5">Cozinha</option>
                     <option value="6">Entregador</option>

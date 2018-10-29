@@ -141,6 +141,14 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="https://github.com/Vengicx/ffsplus/" target="_blank" class="nav-link">
+                        <i class="nav-icon fa fa-github"></i>
+                        <p>GitHub
+                        <i class="right fa fa-angle-left"></i>
+                        </p>
+                    </a>
+                </li><!-- fim do github -->
             </ul>
       </nav>
       <!-- /.sidebar-menu -->

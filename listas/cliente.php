@@ -5,6 +5,8 @@
 		echo "Acesso negado";
 		exit;
 	}
+
+	$tela = $_GET["pg"];
 ?>
 	<h1 class="text-center">Lista de Clientes</h1>
 	<br>
@@ -46,17 +48,18 @@
 				<td>$estado</td>
 				<td>$cidade</td>
 				<td><a class='btn btn-success' href='home.php?fd=cadastro&pg=cliente&id=$id'><i class='fa fa-pencil'></i></a>
-					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a></td>
+					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+				</td>
 			  </tr>";
 	}
 ?>
 	</table>
-<script>	
+	<script>	
 	function excluir(id,nome) {
 		//pergunta e confirmar
-		if (confirm("Deseja realmente excluir "+nome+" ? ")){
+		if ( confirm( "Deseja realmente excluir "+nome+" ? ") ) {
 			//mandar excluir
-			link = "home.php?fd=excluir&pg=usuario&id="+id;
+			link = "home.php?fd=excluir&pg=excluircadastro&tela=<?=$tela?>&id="+id;
 			//chamar o link
 			location.href = link;
 		}
