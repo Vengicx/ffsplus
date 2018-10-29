@@ -34,21 +34,6 @@
     		}
     	}
 
-    	if(empty($nome)){
-            echo "<script>alert('Digite o nome da matéria prima');history.back();</script>";
-            exit;
-
-        }elseif(empty($precoCompra)){
-            echo "<script>alert('Digite o preço de compra');history.back();</script>";
-            exit;
-        }elseif(empty($precoUnidade)){
-            echo "<script>alert('O preço da unidade não foi calculado');history.back();</script>";
-            exit;
-        }elseif(empty($qtdPedacos)){
-            echo "<script>alert('Digite a quantidade dividida da matéria');history.back();</script>";
-            exit;
-        }
-
     	include "app/conecta.php";
 
     	if(isset($id) and isset($quantidade) and !isset($_POST["nome"])){
@@ -63,15 +48,31 @@
 				echo "<script>alert('Quantidade adicionada com sucesso');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
 				$pdo->commit();
 				exit;
+				
 			}else{
 				echo "<script>alert('Erro ao adicionar quantidade');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
 				$pdo->rollBack();	
 				exit;
+
 			}
 		}
 
+		if(empty($nome)){
+            echo "<script>alert('Digite o nome da matéria prima');history.back();</script>";
+            exit;
+
+        }elseif(empty($precoCompra)){
+            echo "<script>alert('Digite o preço de compra');history.back();</script>";
+            exit;
+        }elseif(empty($precoUnidade)){
+            echo "<script>alert('O preço da unidade não foi calculado');history.back();</script>";
+            exit;
+        }elseif(empty($qtdPedacos)){
+            echo "<script>alert('Digite a quantidade dividida da matéria');history.back();</script>";
+            exit;
+        }
+
     	if(empty($id)){
-    		//insert
     		$sql = "INSERT INTO materiaprima (id, nome, precoCompra, precoUnidade, qtdPedacos, quantidade) VALUES 
     		(NULL, :nome, :precoCompra, :precoUnidade, :qtdPedacos, :quantidade)";
 
@@ -99,8 +100,10 @@
 
     	if(empty($id)){
 			$alert = "Adicionada";
+
 		}else{
 			$alert = "Modificada";
+
 		}
 
     	if($consulta->execute()){
@@ -108,7 +111,8 @@
 
     	}else{
     		echo $consulta->errorInfo()[2];
-    		exit;
+			exit;
+			
     	}
 
     }else{

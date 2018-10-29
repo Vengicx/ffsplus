@@ -1,7 +1,7 @@
 <?php
 
     $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = "";
-    $labelId = "";
+    $labelId = "readonly";
 
     if(isset($_GET["id"])){
         $id = trim($_GET["id"]);  
@@ -23,7 +23,6 @@
                 $cep = $dados->cep;
                 $rg = $dados->rg;
 
-                $labelId = "readonly";
                 $labelSenha = "disabled";
         }
     }else{//se nao receber o id pelo GET
@@ -64,14 +63,14 @@
     </div>
     <div class="row">
         <div class="form-group col-md-6">
-          <label for="uf" class="input-label">Estado</label>
-          <select name="uf" id="uf" class="form-control" required disabled data-target="#cidade">
+            <label for="uf" class="input-label">Estado</label>
+            <select name="uf" id="uf" class="form-control" required disabled data-target="#cidade">
                 <option value="">Estado</option>
             </select>
         </div>
         <div class="form-group col-md-6">
-          <label for="cidade" class="input-label">Cidade</label>
-          <select name="cidade" id="cidade" class="form-control" required disabled>
+            <label for="cidade" class="input-label">Cidade</label>
+            <select name="cidade" id="cidade" class="form-control" required disabled>
                 <option value="">Cidade</option>
             </select>
         </div>
@@ -109,9 +108,7 @@
           document.getElementById('cidade').selectedIndex = '<?=$cidade?>';
         }</script>";
     }
-
-
-
+    
 ?>
 <script type="text/javascript"> 
     var estados = [];

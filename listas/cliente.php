@@ -6,7 +6,6 @@
 		exit;
 	}
 
-	$tela = $_GET["pg"];
 ?>
 	<h1 class="text-center">Lista de Clientes</h1>
 	<br>
@@ -54,12 +53,12 @@
 	}
 ?>
 	</table>
-	<script>	
+<script>	
 	function excluir(id,nome) {
 		//pergunta e confirmar
-		if ( confirm( "Deseja realmente excluir "+nome+" ? ") ) {
+		if (confirm("Deseja realmente excluir "+nome+" ? ")){
 			//mandar excluir
-			link = "home.php?fd=excluir&pg=excluircadastro&tela=<?=$tela?>&id="+id;
+			link = "home.php?fd=excluir&pg=excluircadastro&tela=usuario&id="+id;
 			//chamar o link
 			location.href = link;
 		}
