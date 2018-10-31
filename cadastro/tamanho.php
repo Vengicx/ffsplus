@@ -4,7 +4,7 @@
         exit;
     }
 
-    $id = $nome = $qtdPedacos = $qtdSabores = "";
+    $id = $nome = $qtdPedacos = $qtdSabores = $labelId = "";
 
     if(isset($_GET["id"])){
         $id = $_GET["id"];
