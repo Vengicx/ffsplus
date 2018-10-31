@@ -4,7 +4,7 @@
         exit;
     }
 
-    $id = $nome = $login = $senha = $email = $tipoUsuario = $ativo = "";
+    $id = $nome = $login = $senha = $email = $tipoUsuario = $ativo = $labelId = "";
 
     $labelLogin = "readonly";
 
@@ -42,15 +42,15 @@
 <form method="post" action="home.php?fd=salvar&pg=usuario" class="form-ffs" style="padding: 50px;">
     <div class="form-group">
         <label for="id">ID: </label>
-        <input type="text" name="id" <?=$labelId?> required class="form-control" id="labelID" value="<?=$id?>">
+        <input type="text" name="id" <?=$labelId?> readonly class="form-control" id="labelID" value="<?=$id?>">
     </div>
     <div class="form-group">
         <label for="nome">Nome:</label>
-        <input type="text" name="nome" class="form-control" placeholder="Digite o nome do Usuário" value="<?=$nome?>">
+        <input type="text" name="nome" class="form-control" placeholder="Digite o nome do Usuário" required value="<?=$nome?>">
     </div>
     <div class="form-group">
         <label for="login">Login:</label>
-        <input type="text" name="login" data-mask="99/999" class="form-control" <?=$labelLogin?> placeholder="Digite o login" value="<?=$login?>">
+        <input type="text" name="login" data-mask="99/999" class="form-control" required <?=$labelLogin?> placeholder="Digite o login" value="<?=$login?>">
     </div>
     <div class="form-group">
         <label for="senha">Senha:</label>
@@ -58,13 +58,13 @@
     </div>
     <div class="form-group">
         <label for="email">E-Mail:</label>
-        <input type="email" name="email" class="form-control" placeholder="Digite o E-Mail" value="<?=$email?>">
+        <input type="email" name="email" class="form-control" required placeholder="Digite o E-Mail" value="<?=$email?>">
     </div>
     <div class="row">
         <div class="col-md-6">
             <div class="form-group"><!-- select do tipos de Usuários -->
                 <label for="tipoUsuario">Tipo Usuário:</label>
-                <select name="tipoUsuario" id="tipoUsuario" multiple class="form-control" required data-parsley-required-message="Selecione uma opção" value="<?=$tipoUsuario?>">
+                <select name="tipoUsuario" id="tipoUsuario" multiple class="form-control" required value="<?=$tipoUsuario?>">
                     <option value="2">Garçom</option>
                     <option value="4">Caixa</option>
                     <option value="5">Cozinha</option>
@@ -90,8 +90,10 @@
         <?php 
             if(isset($_GET["id"])){
                 $btnForm = "Alterar";
+
             }else{
                 $btnForm = "Cadastrar";
+                
             }
 
         ?>
@@ -100,7 +102,29 @@
 </form>
 <script>
     window.onload=()=>{
-        document.getElementById("tipoUsuario").selectedIndex = "<?=$tipoUsuario?>";
-    }
+        let tipo = "<?=$tipoUsuario?>";
+
+        if(tipo == 1){
+            tipo = 5;
+
+        }else if(tipo == 2){
+            tipo = 0;
+
+        }else if(tipo == 4){
+            tipo = 1;
+
+        }else if(tipo == 5){
+            tipo = 2;
+
+        }else if(tipo == 6){
+            tipo = 3;
+
+        }else{
+            tipo = -1;
+
+        }
+
+            document.getElementById("tipoUsuario").selectedIndex = tipo;
+        }
 
 </script>

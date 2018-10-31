@@ -1,6 +1,6 @@
 <?php
 
-    $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = "";
+    $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = $labelId = "";
 
     if(isset($_GET["id"])){
         $id = trim($_GET["id"]);  
@@ -192,5 +192,7 @@
           loadCidades(target, $(this).val());
         }
       });
-    }, false);        
+    }, false);   
+
+         
 </script>   

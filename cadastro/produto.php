@@ -4,7 +4,7 @@
         exit;
     }
 
-    $labelQtd = "";
+    $labelQtd = $labelId = "";
 
     $id = $nome = $precoCompra = $precoVenda = $quantidade = "";
 
@@ -25,7 +25,7 @@
                 $quantidade = $dados->quantidade;
 
                 $labelQtd = "readonly";
-                $labelId = "required"
+                $labelId = "required";
         }
     }
 ?>
