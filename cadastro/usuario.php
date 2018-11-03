@@ -105,7 +105,7 @@
         let tipo = "<?=$tipoUsuario?>";
 
         if(tipo == 1){
-            tipo = 5;
+            tipo = 4;
 
         }else if(tipo == 2){
             tipo = 0;
@@ -123,8 +123,8 @@
             tipo = -1;
 
         }
-
             document.getElementById("tipoUsuario").selectedIndex = tipo;
+            
         }
 
 </script>
