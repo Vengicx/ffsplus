@@ -65,7 +65,8 @@
 				$_SESSION["sistema"] = array(
 					"id"=>$dados->id,
 					"login"=>$dados->login,
-					"nome"=>$dados->nome
+					"nome"=>$dados->nome,
+					"login"=>$dados->login
 				);
 
 				//mandar para uma tela

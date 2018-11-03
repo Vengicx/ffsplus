@@ -100,13 +100,11 @@
 
 		if(empty($id)){
 			$sql = "INSERT INTO usuario (id, nome, senha, status, tipoUsuario, cpf, endereco, telefone, rg, email, cidade, cep, estado) VALUES
-			(NULL, :nome, :senha, :status, :tipoUsuario, :cpf, :endereco, :telefone, :rg, :email, :cidade, :cep, :estado)";
+			(NULL, :nome, :senha, 1, 3, :cpf, :endereco, :telefone, :rg, :email, :cidade, :cep, :estado)";
 
 			$consulta = $pdo->prepare($sql);
 			$consulta->bindParam(':nome', $nome);
 			$consulta->bindParam(':senha', $senha);
-			$consulta->bindParam(':status', 1);
-			$consulta->bindParam(':tipoUsuario', 3);
 			$consulta->bindParam(':cpf', $cpf);
 			$consulta->bindParam(':endereco', $endereco);
 			$consulta->bindParam(':telefone', $telefone);
@@ -117,13 +115,11 @@
 			$consulta->bindParam(':estado', $estado);
 
 		}else{
-			$sql = "UPDATE usuario SET nome = :nome, senha = :senha, status = :status, tipoUsuario = :tipoUsuario, cpf = :cpf, endereco = :endereco, telefone = :telefone, rg = :rg, email = :email, cidade = :cidade, cep = :cep, estado = :estado WHERE id = :id LIMIT 1";
+			$sql = "UPDATE usuario SET nome = :nome, senha = :senha, cpf = :cpf, endereco = :endereco, telefone = :telefone, rg = :rg, email = :email, cidade = :cidade, cep = :cep, estado = :estado WHERE id = :id LIMIT 1";
 
 			$consulta = $pdo->prepare($sql);
 			$consulta->bindParam(':nome', $nome);
 			$consulta->bindParam(':senha', $senha);
-			$consulta->bindParam(':status', 1);
-			$consulta->bindParam(':tipoUsuario', 3);
 			$consulta->bindParam(':cpf', $cpf);
 			$consulta->bindParam(':endereco', $endereco);
 			$consulta->bindParam(':telefone', $telefone);
