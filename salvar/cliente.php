@@ -21,7 +21,14 @@
 
 		if(isset($_POST["cpf"])){
 			$cpf = trim($_POST["cpf"]);
+			$verificaCPF = validaCPF($cpf);
 
+			if($verificaCPF= false){
+				echo "<script>echo('CPF Inválido');history.back();</script>";
+			}
+			//deixa o cpf sem a mascara
+			$cpf =  preg_replace( '#[^0-9]#', '', $cpf );
+			
 		}
 
 		if(isset($_POST["uf"])){
@@ -44,6 +51,8 @@
 
 		if(isset($_POST["rg"])){
 			$rg = trim($_POST["rg"]);
+			$rg =  preg_replace( '#[^0-9]#', '', $rg );
+			
 		}
 
 		if(isset($_POST["endereco"])){

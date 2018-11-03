@@ -54,11 +54,11 @@
     <div class="row">
         <div class="form-group col-md-6">
             <label for="cpf">CPF:</label>
-            <input type="text" name="cpf" required class="form-control" placeholder="Digite o CPF" value="<?=$cpf?>">
+            <input type="text" name="cpf" required class="form-control" data-mask="999.999.999-99" placeholder="Digite o CPF" value="<?=$cpf?>">
         </div>
         <div class="form-group col-md-6">
             <label for="rg">RG:</label>
-            <input type="text" name="rg" required class="form-control" placeholder="Digite o RG" value="<?=$rg?>">
+            <input type="text" name="rg" required class="form-control" data-mask="99.999.999-9" placeholder="Digite o RG" value="<?=$rg?>">
         </div>
     </div>
     <div class="row">
@@ -81,11 +81,11 @@
     </div>
       <div class="form-group">
         <label for="telefone">Telefone:</label>
-        <input type="text" name="telefone" required class="form-control" placeholder="Digite o telefone" value="<?=$telefone?>">
+        <input type="text" name="telefone" required class="form-control" data-mask="(99) 9999-9999" placeholder="Digite o telefone" value="<?=$telefone?>">
     </div>
     <div class="form-group">
         <label for="cep">CEP:</label>
-        <input type="text" name="cep" required class="form-control" placeholder="Digite o CPF" value="<?=$cep?>">
+        <input type="text" name="cep" required class="form-control" data-mask="99999-999" placeholder="Digite o CPF" value="<?=$cep?>">
     </div>
     <div class="card-footer text-center mt-5">
         <?php 
@@ -109,90 +109,4 @@
         }</script>";
     }
     
-?>
-<script type="text/javascript"> 
-    var estados = [];
-
-    function loadEstados(element) {
-      if (estados.length > 0) {
-        putEstados(element);
-        $(element).removeAttr('disabled');
-      } else {
-        $.ajax({
-          url: 'https://api.myjson.com/bins/enzld',
-          method: 'get',
-          dataType: 'json',
-          beforeSend: function() {
-            $(element).html('<option>Carregando...</option>');
-          }
-        }).done(function(response) {
-          estados = response.estados;
-          putEstados(element);
-          $(element).removeAttr('disabled');
-        });
-      }
-    }
-
-    function putEstados(element) {
-
-      var label = $(element).data('label');
-      label = label ? label : 'Estado';
-
-      var options = '<option value="">' + label + '</option>';
-      for (var i in estados) {
-        var estado = estados[i];
-        options += '<option value="' + estado.sigla + '">' + estado.nome + '</option>';
-      }
-
-      $(element).html(options);
-    }
-
-    function loadCidades(element, estado_sigla) {
-      if (estados.length > 0) {
-        putCidades(element, estado_sigla);
-        $(element).removeAttr('disabled');
-      } else {
-        $.ajax({
-          url: theme_url + '/assets/json/estados.json',
-          method: 'get',
-          dataType: 'json',
-          beforeSend: function() {
-            $(element).html('<option>Carregando...</option>');
-          }
-        }).done(function(response) {
-          estados = response.estados;
-          putCidades(element, estado_sigla);
-          $(element).removeAttr('disabled');
-        });
-      }
-    }
-
-    function putCidades(element, estado_sigla) {
-      var label = $(element).data('label');
-      label = label ? label : 'Cidade';
-
-      var options = '<option value="">' + label + '</option>';
-      for (var i in estados) {
-        var estado = estados[i];
-        if (estado.sigla != estado_sigla)
-          continue;
-        for (var j in estado.cidades) {
-          var cidade = estado.cidades[j];
-          options += '<option value="' + cidade + '">' + cidade + '</option>';
-        }
-      }
-      $(element).html(options);
-    }
-
-    document.addEventListener('DOMContentLoaded', function() {
-      loadEstados('#uf');
-      $(document).on('change', '#uf', function(e) {
-        var target = $(this).data('target');
-        if (target) {
-          loadCidades(target, $(this).val());
-        }
-      });
-    }, false);   
-
-         
-</script>   
+?> 

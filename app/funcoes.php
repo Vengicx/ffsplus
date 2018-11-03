@@ -21,11 +21,12 @@
     	}
 	}
 
-	function validaCPF($cpf = null) {
+	function validaCPF($cpf) {
 
 	// Verifica se um número foi informado
 	if(empty($cpf)) {
 		return false;
+		
 	}
 
 	// Elimina possivel mascara

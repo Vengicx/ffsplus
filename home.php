@@ -18,9 +18,6 @@
 
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/adminlte.min.css">
-
-  <link type="text/javascript" href="js/bootstrap-inputmask.min.js">
-
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -99,6 +96,7 @@
   $.widget.bridge('uibutton', $.ui.button)
 </script>
 <script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/bootstrap-inputmask.min.js"></script>
 <script src="js/daterangepicker/daterangepicker.js"></script>
 <script src="js/adminlte.js"></script>
 
