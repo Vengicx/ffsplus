@@ -41,6 +41,12 @@
     }elseif($tela == "tamanho"){
         $tabela = "tamanho";
 
+    }elseif($tela == "estado"){
+        $tabela = "estado";
+
+    }elseif($tela == "cidade"){
+        $tabela = "cidade";
+
     }elseif($tela == "materiaprima"){
         $tabela = "materiaprima";
         

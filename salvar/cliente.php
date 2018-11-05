@@ -31,18 +31,13 @@
 			
 		}
 
-		if(isset($_POST["uf"])){
-			$estado = trim($_POST["uf"]);
-			if($estado == "Estado"){
-				echo "<script>alert('Selecione um estado');history.back();</script>";
-			}
+		if(isset($_POST["estado"])){
+			$estado = trim($_POST["estado"]);
 		}
 
 		if(isset($_POST["cidade"])){
 			$cidade = trim($_POST["cidade"]);
-			if($cidade == "Cidade"){
-				echo "<script>alert('Selecione uma cidade');history.back();</script>";
-			}
+
 		}
 		
 		if(isset($_POST["cep"])){
@@ -62,6 +57,8 @@
 		if(isset($_POST["telefone"])){
 			$telefone = trim($_POST["telefone"]);
 		}
+
+
 
 		if(empty($nome)){
 			echo "<script>alert('Digite o nome');history.back();</script>";
@@ -103,7 +100,7 @@
 			echo "<script>alert('Digite o estado');history.back();</script>";
 			exit;
 
-		}
+		}		
 
 		include "app/conecta.php"; 
 

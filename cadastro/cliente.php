@@ -63,15 +63,34 @@
     </div>
     <div class="row">
         <div class="form-group col-md-6">
-            <label for="uf" class="input-label">Estado</label>
-            <select name="uf" id="uf" class="form-control" required disabled data-target="#cidade">
-                <option value="">Estado</option>
-            </select>
+            <label for="estado">Estado:</label>
+            <select name="estado" class="form-control" required>
+            <?php
+                include_once "app/conecta.php";
+            
+                $consulta = $pdo->prepare("SELECT * FROM estado");
+                $consulta->execute();
+                while($dados = $consulta->fetch(PDO::FETCH_OBJ)){ 
+                    echo "<option value='$dados->id'>$dados->nome</option>";
+                    
+                }
+
+            ?>
+            </select>  
         </div>
         <div class="form-group col-md-6">
             <label for="cidade" class="input-label">Cidade</label>
-            <select name="cidade" id="cidade" class="form-control" required disabled>
-                <option value="">Cidade</option>
+            <select name="cidade" id="cidade" class="form-control" required>
+                <?php
+                    include_once "app/conecta.php";
+                    
+                    $consulta = $pdo->prepare("SELECT * FROM cidade");
+                    $consulta->execute();
+                    while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
+                        $nome = $dados->nome;
+                        echo "<option value='$nome'>$nome</option>";
+                    }
+                ?>
             </select>
         </div>
     </div>
@@ -101,12 +120,3 @@
             <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
     </div>
 </form>
-<?php
-    if(isset($_GET["id"])){
-      echo "<script>window.onload=()=>{
-          document.getElementById('estado').selectedIndex = '<?=$estado?>';
-          document.getElementById('cidade').selectedIndex = '<?=$cidade?>';
-        }</script>";
-    }
-    
-?> 

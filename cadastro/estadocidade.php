@@ -4,9 +4,26 @@
         exit;
     }
 
-    $id = $nomeEstado = $labelId = $nomeCidade = $uf = "";
-    
+    $idCidade = $idEstado = $nomeEstado = $nomeCidade = $uf = $labelId = "";
+
     include "./app/conecta.php";
+
+    if(isset($_GET["idc"])){
+        $idCidade = trim($_GET["idc"]);
+
+        $sql = "SELECT nome, estado_id FROM cidade";
+        $consulta = $pdo->prepare($sql);
+        $consulta->execute();
+
+        $dados = $consulta->fetch(PDO::FETCH_OBJ);
+            $nomeCidade = $dados->nome;
+            $estado_id = $dados->estado_id;
+
+            $labelId = "required";
+
+    }
+    
+    
 
 ?>
 <div class="card-header">
@@ -18,25 +35,24 @@
         <div class="card-header">
             <h3 class="card-title text-center">Cadastro de Cidade</h3>
         </div>
-        <form method="post" action="home.php?fd=salvar&pg=cidadeestado" style="padding: 30px;">
+        <form method="post" action="home.php?fd=salvar&pg=estadocidade" style="padding: 30px;">
             <div class="form-group">
                 <label for="id">ID: </label>
-                <input type="text" name="id" readonly <?=$labelId?> class="form-control" value="<?=$id?>">
+                <input type="text" name="id" readonly <?=$labelId?> class="form-control" value="<?=$idCidade?>">
             </div>
             <div class="form-group">
                 <label for="nome">Nome:</label>
                 <input type="text" name="nome" required class="form-control" placeholder="Digite o nome da Cidade" value="<?=$nomeCidade?>">
             </div>
             <div class="form-group">
-                <label for="estado">Estado:</label>
-                <select name="estado" class="form-control">
+                <label for="estado_id">Estado:</label>
+                <select name="estado_id" id="tipoUsuario" class="form-control">
                 <?php
                     $consulta = $pdo->prepare("SELECT * FROM estado");
                     $consulta->execute();
                     while($dados = $consulta->fetch(PDO::FETCH_OBJ)){ 
-                        echo "<option value='$dados->uf'>$dados->nome</option>";
+                        echo "<option value='$dados->id'>$dados->nome</option>";
                     }
-
 
                 ?>
                 </select>
@@ -62,17 +78,17 @@
         <div class="card-header">
             <h3 class="card-title text-center">Cadastro de Estado</h3>
         </div>
-        <form method="post" action="home.php?fd=salvar&pg=cidadeestado" style="padding: 30px;">
+        <form method="post" action="home.php?fd=salvar&pg=estadocidade" style="padding: 30px;">
             <div class="form-group">
                 <label for="id">ID: </label>
-                <input type="text" name="id" readonly <?=$labelId?> class="form-control" value="<?=$id?>">
+                <input type="text" name="id" readonly <?=$labelId?> class="form-control" value="<?=$idEstado?>">
             </div>
             <div class="form-group">
-                <label for="estado">Nome:</label>
-                <input type="text" name="estado" required class="form-control" placeholder="Digite o nome do Estado" value="<?=$nomeEstado?>">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" required class="form-control" placeholder="Digite o nome do Estado" value="<?=$nomeEstado?>">
             </div>
             <div class="form-group">
-                <label uf="estado">UF</label>
+                <label for="uf">UF</label>
                 <input type="text" name="uf" required class="form-control" data-mask="aa" placeholder="Digite a sigla do Estado" value="<?=$uf?>">
             </div>
 
@@ -93,3 +109,10 @@
     </div><!-- fim do col-md-6 -->
 </div><!-- fim do row -->
 </form>
+<script>
+window.onload=()=>{
+        document.getElementById("tipoUsuario").selectedIndex = <?=$estado_id?>;
+    }
+
+
+</script>

@@ -50,7 +50,7 @@
     </div>
     <div class="form-group">
         <label for="login">Login:</label>
-        <input type="text" name="login" data-mask="99/999" class="form-control" required <?=$labelLogin?> placeholder="Digite o login" value="<?=$login?>">
+        <input type="text" name="login" class="form-control" required <?=$labelLogin?> placeholder="Digite o login" value="<?=$login?>">
     </div>
     <div class="form-group">
         <label for="senha">Senha:</label>

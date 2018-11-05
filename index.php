@@ -30,11 +30,11 @@ body {
                     <h4><i class="fa fa-warning"></i> Área Restrita</h4>
                     <div class="form-group">
                         <label for="loginUsuario">Usuário</label>
-                        <input type="text" name="loginUsuario" class="form-control" placeholder="Digite seu usuário" required value="admin">
+                        <input type="text" name="loginUsuario" class="form-control" placeholder="Digite seu usuário" required>
                     </div>
                     <div class="form-group">
                         <label for="senha">Senha</label>
-                        <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" value="f@ster123" required>
+                        <input type="password" name="senha" class="form-control" placeholder="Digite sua senha" required>
                     </div>
                     <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Entrar</button>
                 </form>

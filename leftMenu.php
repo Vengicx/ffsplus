@@ -67,6 +67,12 @@
                                 <p>Matéria-Prima</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=cadastro&pg=estadocidade" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Estado/Cidade</p>
+                            </a>
+                        </li>
                     </ul>
                 </li><!-- fim do Charts -->
                 <li class="nav-item has-treeview">
@@ -121,6 +127,12 @@
                             <a href="home.php?fd=listas&pg=tamanho" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
                                 <p>Tamanhos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=listas&pg=estadocidade" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Estado/Cidade</p>
                             </a>
                         </li>
                     </ul>
