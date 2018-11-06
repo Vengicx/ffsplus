@@ -21,6 +21,7 @@
                 $endereco = $dados->endereco;
                 $cep = $dados->cep;
                 $rg = $dados->rg;
+                $telefone = $dados->telefone;
 
                 $labelSenha = "disabled";
                 $labelId = "required";
@@ -87,8 +88,8 @@
                     $consulta = $pdo->prepare("SELECT * FROM cidade");
                     $consulta->execute();
                     while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
-                        $nome = $dados->nome;
-                        echo "<option value='$nome'>$nome</option>";
+                        echo "<option value='$dados->id'>$dados->nome</option>";
+
                     }
                 ?>
             </select>
@@ -98,7 +99,7 @@
         <label for="endereco">Endereço:</label>
         <input type="text" name="endereco" required class="form-control" placeholder="Digite o endereço" value="<?=$endereco?>">
     </div>
-      <div class="form-group">
+    <div class="form-group">
         <label for="telefone">Telefone:</label>
         <input type="text" name="telefone" required class="form-control" data-mask="(99) 9999-9999" placeholder="Digite o telefone" value="<?=$telefone?>">
     </div>
