@@ -1,6 +1,8 @@
 <?php
-    if(isset($id)){
+
+    if(isset($_POST["id"])){
         $id = trim($_POST["id"]);
+
     }
     
     if(isset($_POST["nome"])){
@@ -25,6 +27,7 @@
         echo "<script>echo('Digite um estado');history.back();</script>";
 
     }
+
         include "app/conecta.php";
 
         if(isset($uf)){
@@ -45,11 +48,11 @@
                 $consulta->bindParam(':nome', $nome);
                 $consulta->bindParam(':uf', $uf);
 
-            }elseif(!isset($uf)){
+            }elseif(isset($estado_id)){
                 $sql = "INSERT INTO cidade (id, nome, estado_id) VALUES (NULL, :nome, :estado_id)";
                 $consulta = $pdo->prepare($sql);
                 $consulta->bindParam(':nome', $nome);
-                $consulta->bindParam('estado_id', $estado_id);
+                $consulta->bindParam(':estado_id', $estado_id);
 
             }
 
@@ -63,11 +66,13 @@
                 $consulta->bindParam(':nome', $nome);
                 $consulta->bindParam(':uf', $uf);
 
-            }elseif(!isset($uf)){
-                $sql = "UPDATE cidade SET nome = :nome, estadp_id = :estado_id WHERE id = :id LIMIT 1";
+            }elseif(isset($estado_id)){
+                $sql = "UPDATE cidade SET nome = :nome, estado_id = :estado_id WHERE id = :id LIMIT 1";
                 $consulta = $pdo->prepare($sql);
                 $consulta->bindParam(':nome', $nome);
                 $consulta->bindParam(':estado_id', $estado_id);
+                $consulta->bindParam(':id', $id);
+             
             }
         }
 

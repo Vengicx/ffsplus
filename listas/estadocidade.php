@@ -30,6 +30,7 @@
         $tela = "cidade";
 
         $sql = "SELECT c.nome, e.uf, c.id FROM cidade c INNER JOIN estado e on c.estado_id = e.id";
+
         $query = $pdo->prepare($sql);
         $query->execute();
 

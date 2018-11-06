@@ -46,7 +46,7 @@
             </div>
             <div class="form-group">
                 <label for="estado_id">Estado:</label>
-                <select name="estado_id" id="tipoUsuario" class="form-control">
+                <select name="estado_id" id="selectEstado" class="form-control">
                 <?php
                     $consulta = $pdo->prepare("SELECT * FROM estado");
                     $consulta->execute();
@@ -109,10 +109,3 @@
     </div><!-- fim do col-md-6 -->
 </div><!-- fim do row -->
 </form>
-<script>
-window.onload=()=>{
-        document.getElementById("tipoUsuario").selectedIndex = <?=$estado_id?>;
-    }
-
-
-</script>

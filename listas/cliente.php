@@ -25,24 +25,26 @@
 		</thead>
 <?php
 	include "./app/conecta.php";
-	$sql = "select * from usuario where tipoUsuario = 3";
+	$sql = "SELECT u.id, u.nome as usuario_nome, u.cpf, u.email, u.rg, c.nome as cidade_nome, e.nome as estado_nome FROM usuario u INNER JOIN cidade c ON u.cidade = c.id INNER JOIN estado e ON c.id = e.id";
+
+
 	$query = $pdo->prepare($sql);
 	$query->execute();
 
 	while($data = $query->fetch(PDO::FETCH_OBJ)){
 		$id = $data->id;
-		$nome = $data->nome;
+		$nome = $data->usuario_nome;
 		$cpf = $data->cpf;
 		$rg = $data->rg;
 		$email = $data->email;
-		$cidade = $data->cidade;
-		$estado = $data->estado;
+		$cidade = $data->cidade_nome;
+		$estado = $data->estado_nome;
 		
 		echo "<tr>
 				<td>$id</td>
 				<td>$nome</td>
 				<td>$email</td>
-				<td>$cpf</td>
+				<td data-mask='999.999.999-99'>$cpf</td>
 				<td>$rg</td>
 				<td>$estado</td>
 				<td>$cidade</td>

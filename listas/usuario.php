@@ -23,21 +23,37 @@
 		</thead>
 <?php
 	include "./app/conecta.php";
-	$sql = "select * from usuario where not tipoUsuario = 3";
-	$query = $pdo->prepare($sql);
-	$query->execute();
-	while($data = $query->fetch(PDO::FETCH_OBJ)){
-		$id = $data->id;
-		$nome = $data->nome;
-		
-		if($data->status == 1){
+	$sql = "SELECT * FROM usuario WHERE not tipoUsuario = 3";
+	$consulta = $pdo->prepare($sql);
+	$consulta->execute();
+	while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
+		$id = $dados->id;
+		$nome = $dados->nome;
+		$tipoUsuario = $dados->tipoUsuario;
+
+		if($dados->status == 1){
 			$status = "Ativo";
 		}else{
 			$status = "Inativo";
 		}
 
-		$tipoUsuario = $data->tipoUsuario;
-		
+		if($tipoUsuario == 1){
+			$tipoUsuario = "Administrador";
+
+		}elseif($tipoUsuario == 2){
+			$tipoUsuario = "Garçom";
+			
+		}elseif($tipoUsuario == 4){
+			$tipoUsuario = "Caixa";
+			
+		}elseif($tipoUsuario == 5){
+			$tipoUsuario = "Cozinha";
+			
+		}elseif($tipoUsuario == 6){
+			$tipoUsuario = "Entregador";
+			
+		}
+
 		echo "<tr>
 				<td>$id</td>
 				<td>$nome</td>
@@ -54,7 +70,7 @@
 <script>	
 	function excluir(id,nome) {
 		//pergunta e confirmar
-		if ( confirm( "Deseja realmente excluir "+nome+" ? ") ) {
+		if (confirm("Deseja realmente excluir "+nome+"?")){
 			//mandar excluir
 			link = "home.php?fd=excluir&pg=excluircadastro&tela=<?=$tela?>&id="+id;
 			//chamar o link
