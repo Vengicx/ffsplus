@@ -1,15 +1,16 @@
-<link rel="stylesheet" type="text/css" href="dist/dataTables.css">
-<link rel="stylesheet" type="text/javascript" href="dist/dataTables.js">
 <?php
-	if ( !isset ( $page ) ) {
-		echo "Acesso negado";
-		exit;
-	}
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
 
 ?>
+<link rel="stylesheet" type="text/css" href="dist/dataTables.css">
+<link rel="stylesheet" type="text/javascript" href="dist/dataTables.js">
+
 	<h1 class="text-center">Lista de Clientes</h1>
 	<br>
-
+	<div class="tabela">
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
@@ -47,9 +48,6 @@
 		$arrayRg = str_split($rg, 1);
 		$rg2 = $arrayRg[0].$arrayRg[1].".".$arrayRg[2].$arrayRg[3].$arrayRg[4].".".$arrayRg[5].$arrayRg[6].$arrayRg[7]."-".$arrayRg[8];
 
-		
-
-		
 		echo "<tr>
 				<td>$id</td>
 				<td>$nome</td>
@@ -65,7 +63,19 @@
 	}
 ?>
 	</table>
-<script>	
+</div>
+<script>
+	//executar apos carregar o documento toto
+	$(document).ready(function(){
+
+		//adicionar dataTable na tabela
+		 $('.tabela').dataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+            }
+        } );
+	});
+	
 	function excluir(id,nome) {
 		//pergunta e confirmar
 		if (confirm("Deseja realmente excluir "+nome+" ? ")){
@@ -75,4 +85,5 @@
 			location.href = link;
 		}
 	}
+
 </script>

@@ -1,3 +1,10 @@
+<?php
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
+    
+?>
 <style>
     .materia-prima{
         float: left;

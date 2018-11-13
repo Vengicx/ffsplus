@@ -18,6 +18,7 @@
 
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/adminlte.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -81,9 +82,14 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
-<script src="js/bootstrap.bundle.min.js"></script>
+<!-- nao sei -->
+<script src="js/bootstrap.bundle.min.js"></script>4
+<!-- inputmask das coisas -->
 <script src="js/bootstrap-inputmask.min.js"></script>
-<script src="js/daterangepicker/daterangepicker.js"></script>
+<!-- data tables -->
+<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<!-- funcoes do layout -->
 <script src="js/adminlte.js"></script>
 
 </body>

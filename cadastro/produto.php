@@ -1,6 +1,6 @@
 <?php
     if ( !isset ( $page ) ) {
-        echo "Acesso negado";
+        header("Location: ./index.php");
         exit;
     }
 

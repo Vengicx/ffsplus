@@ -1,4 +1,8 @@
 <?php
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
 	
 	include "app/funcoes.php";
 
@@ -46,7 +50,7 @@
 
 		if(isset($_POST["rg"])){
 			$rg = trim($_POST["rg"]);
-			$rg =  preg_replace( '#[^0-9]#', '', $rg );
+			$rg = preg_replace( '#[^0-9]#', '', $rg );
 			
 		}
 
@@ -57,8 +61,6 @@
 		if(isset($_POST["telefone"])){
 			$telefone = trim($_POST["telefone"]);
 		}
-
-
 
 		if(empty($nome)){
 			echo "<script>alert('Digite o nome');history.back();</script>";
@@ -144,7 +146,6 @@
 			$alert = "Modificado";
 		}
 
-
 		if($consulta->execute()){
 			echo "<script>alert('Cliente $alert com sucesso');location.replace('home.php?fd=listas&pg=cliente');</script>";
 
@@ -154,8 +155,5 @@
 			echo "<script>alert('Erro ao inserir/modificar cliente');location.replace('home.php?fd=listas&pg=cliente');</script>";
 		}
 
-
 	}//fim do $_POST
-
-
 ?>

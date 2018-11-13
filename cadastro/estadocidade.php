@@ -1,6 +1,6 @@
 <?php
     if ( !isset ( $page ) ) {
-        echo "Acesso negado";
+        header("Location: ./index.php");
         exit;
     }
 
@@ -11,8 +11,9 @@
     if(isset($_GET["idc"])){
         $idCidade = trim($_GET["idc"]);
 
-        $sql = "SELECT nome, estado_id FROM cidade";
+        $sql = "SELECT nome, estado_id FROM cidade WHERE id = ?";
         $consulta = $pdo->prepare($sql);
+        $consulta->bindParam(1, $idCidade);
         $consulta->execute();
 
         $dados = $consulta->fetch(PDO::FETCH_OBJ);
@@ -20,11 +21,8 @@
             $estado_id = $dados->estado_id;
 
             $labelId = "required";
-
     }
     
-    
-
 ?>
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Cidade e Estado</h3>
@@ -48,9 +46,9 @@
                 <label for="estado_id">Estado:</label>
                 <select name="estado_id" id="selectEstado" class="form-control">
                 <?php
-                    $consulta = $pdo->prepare("SELECT * FROM estado");
-                    $consulta->execute();
-                    while($dados = $consulta->fetch(PDO::FETCH_OBJ)){ 
+                    $consulta2 = $pdo->prepare("SELECT * FROM estado");
+                    $consulta2->execute();
+                    while($dados = $consulta2->fetch(PDO::FETCH_OBJ)){ 
                         echo "<option value='$dados->id'>$dados->nome</option>";
                     }
 

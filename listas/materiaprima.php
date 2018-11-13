@@ -1,12 +1,12 @@
 <?php
-	if ( !isset ( $page ) ) {
-		echo "Acesso negado";
-		exit;
-	}
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
 
 	$tela = $_GET["pg"];
 ?>
-	<h1 class="text-center">Lista de Produtos</h1>
+	<h1 class="text-center">Lista de Matéria-Prima</h1>
 	<br>
 
 	<table class="table table-bordered table-striped">

@@ -1,4 +1,9 @@
 <?php
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
+    
     if(isset($_SESSION["sistema"]["nome"])){
         $usuarioLogado = $_SESSION["sistema"]["nome"];
 
@@ -17,7 +22,7 @@
       <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="info">
-                <a href="#" onblur="limitarTexto(<?=$usuarioLogado?>, 5)">Logado Como: <?php echo $usuarioLogado;?></a><!-- arrumar-->
+                <a href="#" onblur="limitarTexto(<?=$usuarioLogado?>, 5)"><i class="fa fa-user"></i> <?php echo $usuarioLogado;?></a><!-- arrumar-->
             </div>
         </div>
       <!-- Sidebar Menu -->

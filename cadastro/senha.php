@@ -1,3 +1,9 @@
+<?php    
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
+?>  
 <form method="post" action="home.php?fd=salvar&pg=senha" style="padding: 50px;">
     <div class="form-group">
         <label for="senha">Senha Atual: </label>

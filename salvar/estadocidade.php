@@ -1,5 +1,9 @@
 <?php
-
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
+    
     if(isset($_POST["id"])){
         $id = trim($_POST["id"]);
 

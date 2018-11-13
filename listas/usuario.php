@@ -1,10 +1,10 @@
 <link rel="stylesheet" type="text/css" href="dist/dataTables.css">
 <link rel="stylesheet" type="text/javascript" href="dist/dataTables.js">
 <?php
-	if ( !isset ( $page ) ) {
-		echo "Acesso negado";
-		exit;
-	}
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
 
 	$tela = $_GET["pg"];
 ?>

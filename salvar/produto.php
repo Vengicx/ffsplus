@@ -1,4 +1,8 @@
 <?php
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
 	$id = $nome = $precoCompra = $precoVenda = $quantidade = "";
 	
 	$tipoProduto = 2;

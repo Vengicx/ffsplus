@@ -1,4 +1,8 @@
 <?php
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
+    }
 
     $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = $labelId = "";
 

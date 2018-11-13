@@ -1,9 +1,8 @@
 <?php
-    if(!isset($_SESSION["sistema"]["id"])){
-            header("location: ./index.php");
-            
+    if ( !isset ( $page ) ) {
+        header("Location: ./index.php");
+        exit;
     }
-    
     require_once "./app/conecta.php";
     
     #post from ./cadastro/alterarSenha.php
