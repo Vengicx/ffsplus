@@ -22,7 +22,7 @@
         <div class="row">
             <div class="form-group col-4">
                 <label for="precoCompra">Preço Compra:</label>
-                <input type="number" name="precoCompra" class="form-control" placeholder="Digite o Preço de Compra" id="precoCompra" value="<?=$precoCompra?>" onkeyup="calcular()" required>
+                <input type="text" name="precoCompra" class="form-control" placeholder="Digite o Preço de Compra" id="precoCompra" value="<?=$precoCompra?>" data-mask="9?99,99" required>
             </div>
             <div class="form-group col-4">
                 <label for="qtdPedacos">Quantidade por Pedaço:</label>

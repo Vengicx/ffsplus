@@ -22,13 +22,28 @@
 
             $labelId = "required";
     }
-    
+
+    if(isset($_GET["ide"])){
+        $idEstado = trim($_GET["ide"]);
+
+        $sql = "SELECT nome, uf FROM estado WHERE id = ?";
+        $consulta = $pdo->prepare($sql);
+        $consulta->bindParam(1, $idEstado);
+        $consulta->execute();
+
+        $dados = $consulta->fetch(PDO::FETCH_OBJ);
+            $nomeEstado = $dados->nome;
+            $uf = $dados->uf;
+
+            $labelId = "required";
+    }
 ?>
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Cidade e Estado</h3>
 </div>
 
 <div class="row">
+    <!-- CIDADE -->
     <div class="col-md-6">
         <div class="card-header">
             <h3 class="card-title text-center">Cadastro de Cidade</h3>
@@ -71,7 +86,7 @@
             </div>
         </form>
     </div><!-- fim do col-md-6 -->
-    
+    <!-- ESTADO -->
     <div class="col-md-6">
         <div class="card-header">
             <h3 class="card-title text-center">Cadastro de Estado</h3>

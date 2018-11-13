@@ -8,6 +8,7 @@
 ?>
 <hr>
 <div class="row">
+    <!--CIDADE -->
     <div class="col-md-6">
         <div class="card-header">
             <h1 class="card-title text-center">Lista de Cidades</h1>
@@ -52,7 +53,8 @@
         }
     ?>
         </table>
-    </div><!-- fim da cidade -->
+    </div>
+    <!-- ESTADO -->
     <div class="col-md-6">
         <div class="card-header">
             <h1 class="card-title text-center">Lista de Estados</h1>
@@ -63,7 +65,8 @@
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Nome</td>
+                    <td>Nome</td> 
+                    <td>UF</td>
                     <td>Opções</td>
                 </tr>
             </thead>
@@ -80,10 +83,12 @@
         while($data = $query->fetch(PDO::FETCH_OBJ)){
             $id = $data->id;
             $nome = $data->nome;
+            $uf = $data->uf;
 
             echo "<tr>
                     <td>$id</td>
                     <td>$nome</td>
+                    <td>$uf</td>
                     <td>
                         <a class='btn btn-success' href='home.php?fd=cadastro&pg=estadocidade&tela=estado&ide=$id'><i class='fa fa-pencil'></i></a>
                         <a href=\"javascript:excluir($id,'$nome','$tela')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>

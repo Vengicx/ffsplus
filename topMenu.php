@@ -1,11 +1,3 @@
-<?php
-    if ( !isset ( $page ) ) {
-        header("Location: ./index.php");
-        exit;
-    }
-
-
-?>
 <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
