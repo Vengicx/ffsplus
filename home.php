@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/adminlte.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
 </head>
@@ -87,8 +87,7 @@
 <!-- inputmask das coisas -->
 <script src="js/bootstrap-inputmask.min.js"></script>
 <!-- data tables -->
-<script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <!-- funcoes do layout -->
 <script src="js/adminlte.js"></script>
 

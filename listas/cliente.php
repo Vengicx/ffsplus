@@ -5,13 +5,10 @@
     }
 
 ?>
-<link rel="stylesheet" type="text/css" href="dist/dataTables.css">
-<link rel="stylesheet" type="text/javascript" href="dist/dataTables.js">
 
 	<h1 class="text-center">Lista de Clientes</h1>
 	<br>
-	<div class="tabela">
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped tabela">
 		<thead>
 			<tr>
 				<td>ID</td>
@@ -63,7 +60,6 @@
 	}
 ?>
 	</table>
-</div>
 <script>
 	//executar apos carregar o documento toto
 	$(document).ready(function(){
