@@ -14,7 +14,9 @@
     	}
 
     	if(isset($_POST["precoCompra"])){
-    		$precoCompra = trim ($_POST["precoCompra"]);
+			$precoCompra = trim ($_POST["precoCompra"]);
+			
+			$precoCompra = str_replace(",",".", $precoCompra);
     	}
 
     	if(isset($_POST["precoUnidade"])){
@@ -107,7 +109,8 @@
 		}
 
     	if($consulta->execute()){
-    		echo "<script>alert('Matéria-Prima $alert com sucesso');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
+			echo "<script>alert('Matéria-Prima $alert com sucesso');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
+			exit;
 
     	}else{
     		echo $consulta->errorInfo()[2];

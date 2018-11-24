@@ -26,6 +26,9 @@
 
                 $labelQtd = "readonly";
                 $labelId = "required";
+
+                $precoCompra = str_replace(".", ",", $precoCompra);
+                $precoVenda = str_replace(".", ",", $precoVenda);
         }
     }
 ?>

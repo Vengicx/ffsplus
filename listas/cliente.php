@@ -8,7 +8,8 @@
 
 	<h1 class="text-center">Lista de Clientes</h1>
 	<br>
-	<table class="table table-bordered table-striped tabela">
+	<a href="home.php?fd=cadastro&pg=cliente" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
+	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
 				<td>ID</td>
@@ -60,26 +61,16 @@
 	}
 ?>
 	</table>
-<script>
+<script type="text/javascript">
 	//executar apos carregar o documento toto
 	$(document).ready(function(){
 
 		//adicionar dataTable na tabela
-		 $('.tabela').dataTable( {
+		 $('#tabela').dataTable( {
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
             }
         } );
-	});
-	
-	function excluir(id,nome) {
-		//pergunta e confirmar
-		if (confirm("Deseja realmente excluir "+nome+" ? ")){
-			//mandar excluir
-			link = "home.php?fd=excluir&pg=excluircadastro&tela=usuario&id="+id;
-			//chamar o link
-			location.href = link;
-		}
-	}
 
+	});
 </script>

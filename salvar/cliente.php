@@ -41,7 +41,6 @@
 
 		if(isset($_POST["cidade"])){
 			$cidade = trim($_POST["cidade"]);
-
 		}
 		
 		if(isset($_POST["cep"])){
@@ -60,6 +59,14 @@
 
 		if(isset($_POST["telefone"])){
 			$telefone = trim($_POST["telefone"]);
+		}
+
+		if(isset($_POST["nascimento"])){
+			$nascimento = trim($_POST["nascimento"]);
+		}
+
+		if(isset($_POST["numero"])){
+			$numero = trim($_POST["numero"]);
 		}
 
 		if(empty($nome)){
@@ -94,6 +101,10 @@
 			echo "<script>alert('Digite o CEP');history.back();</script>";
 			exit;
 
+		}elseif(empty($nascimento)){
+			echo "<script>alert('Digite a data de nascimento');history.back();</script>";
+			exit;
+
 		}elseif(empty($cidade)){
 			echo "<script>alert('Digite a cidade');history.back();</script>";
 			exit;
@@ -102,13 +113,17 @@
 			echo "<script>alert('Digite o estado');history.back();</script>";
 			exit;
 
-		}		
+		}elseif(empty($numero)){
+			echo "<script>alert('Digite o número de sua casa');history.back();</script>";
+			exit;
+
+		}			
 
 		include "app/conecta.php"; 
 
 		if(empty($id)){
-			$sql = "INSERT INTO usuario (id, nome, senha, status, tipoUsuario, cpf, endereco, telefone, rg, email, cidade, cep, estado) VALUES
-			(NULL, :nome, :senha, 1, 3, :cpf, :endereco, :telefone, :rg, :email, :cidade, :cep, :estado)";
+			$sql = "INSERT INTO usuario (id, nome, senha, status, tipoUsuario, cpf, endereco, telefone, rg, email, cidade, cep, estado, nascimento, numero) VALUES
+			(NULL, :nome, :senha, 1, 3, :cpf, :endereco, :telefone, :rg, :email, :cidade, :cep, :estado, :nascimento, :numero)";
 
 			$consulta = $pdo->prepare($sql);
 			$consulta->bindParam(':nome', $nome);
@@ -121,9 +136,11 @@
 			$consulta->bindParam(':cidade', $cidade);
 			$consulta->bindParam(':cep', $cep);
 			$consulta->bindParam(':estado', $estado);
+			$consulta->bindParam(':nascimento', $nascimento);
 
 		}else{
-			$sql = "UPDATE usuario SET nome = :nome, senha = :senha, cpf = :cpf, endereco = :endereco, telefone = :telefone, rg = :rg, email = :email, cidade = :cidade, cep = :cep, estado = :estado WHERE id = :id LIMIT 1";
+			$sql = "UPDATE usuario SET nome = :nome, senha = :senha, cpf = :cpf, endereco = :endereco, telefone = :telefone, rg = :rg, email = 
+						:email, cidade = :cidade, cep = :cep, estado = :estado, nascimento = :nascimento, numero = :numero WHERE id = :id LIMIT 1";
 
 			$consulta = $pdo->prepare($sql);
 			$consulta->bindParam(':nome', $nome);
@@ -136,6 +153,8 @@
 			$consulta->bindParam(':cidade', $cidade);
 			$consulta->bindParam(':cep', $cep);
 			$consulta->bindParam(':estado', $estado);
+			$consulta->bindParam(':nascimento', $nascimento);
+			$consulta->bindParam(':numero', $numero);
 			$consulta->bindParam(':id', $id);
 
 		}

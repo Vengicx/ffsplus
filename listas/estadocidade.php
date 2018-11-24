@@ -15,6 +15,7 @@
         </div>
         <br>
 
+        <a href="home.php?fd=cadastro&pg=estadocidade" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
@@ -61,6 +62,7 @@
         </div>
         <br>
 
+        <a href="home.php?fd=cadastro&pg=estadocidade" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>

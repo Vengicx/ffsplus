@@ -9,6 +9,7 @@
 	<h1 class="text-center">Lista de Matéria-Prima</h1>
 	<br>
 
+	<a href="home.php?fd=cadastro&pg=materiaprima" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
@@ -39,6 +40,7 @@
 		$precoUnidade = $data->precoUnidade;
 
 		$precoCompra = str_replace(".", ",", $precoCompra);
+		$precoUnidade = str_replace(".", ",", $precoUnidade);
 
 		echo "<tr>
 				<form action=\"home.php?fd=salvar&pg=materiaprima\" method=\"post\">
@@ -47,7 +49,7 @@
 				<td>R$ $precoCompra</td>
 				<td>$quantidade</td>
 				<td>$qtdPedacos</td>
-				<td>$precoUnidade</td>
+				<td>R$ $precoUnidade</td>
 				<td><input type=\"number\" name=\"quantidade\" required></td>
 				<td>
 					<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='fa fa-plus'></i></button>

@@ -4,7 +4,7 @@
         exit;
     }
 
-    $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = $labelId = "";
+    $id = $nome = $login = $senha = $email = $telefone = $tipoUsuario = $ativo = $endereco = $cpf = $cep = $rg = $labelId = $nascimento = $numero = "";
 
     if(isset($_GET["id"])){
         $id = trim($_GET["id"]);  
@@ -26,6 +26,8 @@
                 $cep = $dados->cep;
                 $rg = $dados->rg;
                 $telefone = $dados->telefone;
+                $nascimento = $dados->nascimento;
+                $numero = $dados->numero;
 
                 $labelSenha = "disabled";
                 $labelId = "required";
@@ -99,13 +101,23 @@
             </select>
         </div>
     </div>
-    <div class="form-group">
-        <label for="endereco">Endereço:</label>
-        <input type="text" name="endereco" required class="form-control" placeholder="Digite o endereço" value="<?=$endereco?>">
-    </div>
-    <div class="form-group">
-        <label for="telefone">Telefone:</label>
-        <input type="text" name="telefone" required class="form-control" data-mask="(99) 9999-9999" placeholder="Digite o telefone" value="<?=$telefone?>">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="telefone">Telefone:</label>
+            <input type="text" name="telefone" required class="form-control" data-mask="(99) 9999-9999" placeholder="Digite o telefone" value="<?=$telefone?>">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="nascimento">Data de Nascimento:</label>
+            <input type="date" name="nascimento" required class="form-control" placeholder="Escolha sua data de nascimento" value="<?=$nascimento?>">
+        </div>
+        <div class="form-group col-md-10">
+            <label for="endereco">Endereço:</label>
+            <input type="text" name="endereco" required class="form-control" placeholder="Digite o endereço" value="<?=$endereco?>">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="numero">Número:</label>
+            <input type="text" name="numero" required class="form-control" placeholder="Digite o número da casa" value="<?=$numero?>">
+        </div>
     </div>
     <div class="form-group">
         <label for="cep">CEP:</label>

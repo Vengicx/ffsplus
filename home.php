@@ -87,7 +87,7 @@
 <!-- inputmask das coisas -->
 <script src="js/bootstrap-inputmask.min.js"></script>
 <!-- data tables -->
-<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="js/jquery.dataTables.min.js"></script>
 <!-- funcoes do layout -->
 <script src="js/adminlte.js"></script>
 

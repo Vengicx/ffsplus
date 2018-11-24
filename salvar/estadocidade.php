@@ -82,16 +82,13 @@
 
         if($consulta->execute()){
             echo "<script>alert('$alert $acao com sucesso!');location.replace('home.php?fd=listas&pg=estadocidade')</script>";
+            exit;
             
         }else{
             echo $consulta->errorInfo()[2];
-
+            echo "<script>alert('Não foi possível realizar a requisição');history.back();</script>";
+            exit;
+            
         }
-
-  
-    
-
-
-
 
 ?>

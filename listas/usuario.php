@@ -11,6 +11,7 @@
 	<h1 class="text-center">Lista de Usuários</h1>
 	<br>
 
+	<a href="home.php?fd=cadastro&pg=usuario" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
 	<table class="table table-bordered table-striped">
 		<thead>
 			<tr>
