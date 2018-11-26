@@ -61,14 +61,11 @@
 	}
 ?>
 	</table>
-<script type="text/javascript">
-	//executar apos carregar o documento toto
+<script>
 	$(document).ready(function(){
-
-		//adicionar dataTable na tabela
 		 $('#tabela').dataTable( {
             "language": {
-                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+                "url": "js/Portuguese-Brasil.json"
             }
         } );
 

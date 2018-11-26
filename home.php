@@ -18,8 +18,13 @@
 
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <link rel="stylesheet" href="css/adminlte.min.css">
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="css/jquery.dataTables.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.dataTables.min.js"></script>
+  <script src="js/dataTables.bootstrap4.js"></script>
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -76,18 +81,12 @@
   </footer>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
-
-<script src="js/jquery.min.js"></script>
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
 <!-- nao sei -->
 <script src="js/bootstrap.bundle.min.js"></script>4
 <!-- inputmask das coisas -->
 <script src="js/bootstrap-inputmask.min.js"></script>
 <!-- data tables -->
-<script src="js/jquery.dataTables.min.js"></script>
+
 <!-- funcoes do layout -->
 <script src="js/adminlte.js"></script>
 

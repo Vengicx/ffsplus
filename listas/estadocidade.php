@@ -16,7 +16,7 @@
         <br>
 
         <a href="home.php?fd=cadastro&pg=estadocidade" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped tabela">
             <thead>
                 <tr>
                     <td>ID</td>
@@ -63,7 +63,7 @@
         <br>
 
         <a href="home.php?fd=cadastro&pg=estadocidade" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped tabela">
             <thead>
                 <tr>
                     <td>ID</td>
@@ -102,7 +102,15 @@
         </table>
     </div><!-- fim do estado -->
 </div><!-- fim do row -->
-<script>	
+<script>
+	$(document).ready(function(){
+		 $('.tabela').dataTable( {
+            "language": {
+                "url": "js/Portuguese-Brasil.json"
+            }
+        } );
+
+	});
 	function excluir(id,nome,tela) {
 		//pergunta e confirmar
 		if ( confirm( "Deseja realmente excluir "+nome+" ? ") ) {

@@ -10,7 +10,7 @@
 	<br>
 
 	<a href="home.php?fd=cadastro&pg=materiaprima" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
 				<td>ID</td>
@@ -23,45 +23,53 @@
 				<td>Opções</td>
 			</tr>
 		</thead>
-<?php
+		<?php
 
-	include "./app/conecta.php";
+			include "./app/conecta.php";
 
-	$sql = "select * from materiaprima";
-	$query = $pdo->prepare($sql);
-	$query->execute();
+			$sql = "SELECT * FROM materiaprima";
+			$query = $pdo->prepare($sql);
+			$query->execute();
 
-	while($data = $query->fetch(PDO::FETCH_OBJ)){
-		$id = $data->id;
-		$nome = $data->nome;
-		$precoCompra = $data->precoCompra;
-		$qtdPedacos = $data->qtdPedacos;
-		$quantidade = $data->quantidade;
-		$precoUnidade = $data->precoUnidade;
+			while($data = $query->fetch(PDO::FETCH_OBJ)){
+				$id = $data->id;
+				$nome = $data->nome;
+				$precoCompra = $data->precoCompra;
+				$qtdPedacos = $data->qtdPedacos;
+				$quantidade = $data->quantidade;
+				$precoUnidade = $data->precoUnidade;
 
-		$precoCompra = str_replace(".", ",", $precoCompra);
-		$precoUnidade = str_replace(".", ",", $precoUnidade);
+				$precoCompra = str_replace(".", ",", $precoCompra);
+				$precoUnidade = str_replace(".", ",", $precoUnidade);
 
-		echo "<tr>
-				<form action=\"home.php?fd=salvar&pg=materiaprima\" method=\"post\">
-				<td><input type=\"hidden\" name=\"id\" value=\"$id\">$id</td>
-				<td>$nome</td>
-				<td>R$ $precoCompra</td>
-				<td>$quantidade</td>
-				<td>$qtdPedacos</td>
-				<td>R$ $precoUnidade</td>
-				<td><input type=\"number\" name=\"quantidade\" required></td>
-				<td>
-					<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='fa fa-plus'></i></button>
-					<a class='btn btn-success' href='home.php?fd=cadastro&pg=materiaprima&id=$id'><i class='fa fa-pencil'></i></a>
-					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
-				</td>
-			  </tr>
-			  </form>";
-	}
-?>
+				echo "<tr>
+						<form action=\"home.php?fd=salvar&pg=materiaprima\" method=\"post\">
+						<td><input type=\"hidden\" name=\"id\" value=\"$id\">$id</td>
+						<td>$nome</td>
+						<td>R$ $precoCompra</td>
+						<td>$quantidade</td>
+						<td>$qtdPedacos</td>
+						<td>R$ $precoUnidade</td>
+						<td><input type=\"number\" name=\"quantidade\" required></td>
+						<td>
+							<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='fa fa-plus'></i></button>
+							<a class='btn btn-success' href='home.php?fd=cadastro&pg=materiaprima&id=$id'><i class='fa fa-pencil'></i></a>
+							<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+						</td>
+					</tr>
+					</form>";
+			}
+		?>
 	</table>
 <script>	
+	$(document).ready(function(){
+		 $('#tabela').dataTable( {
+            "language": {
+                "url": "js/Portuguese-Brasil.json"
+            }
+        } );
+
+	});
 	function excluir(id,nome) {
 		//pergunta e confirmar
 		if ( confirm( "Deseja realmente excluir "+nome+" ? ") ) {
@@ -71,4 +79,6 @@
 			location.href = link;
 		}
 	}
+	
+
 </script>
