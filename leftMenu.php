@@ -140,7 +140,7 @@
                         </li>
                     </ul>
                 </li><!-- listas -->
-                <!--<li class="nav-item has-treeview">
+                <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fa fa-hand-pointer-o"></i>
                         <p>Pedidos
@@ -149,13 +149,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="home.php?fd=pedido&pg=cadastro" class="nav-link">
                                 <i class="fa fa-circle-o nav-icon"></i>
-                                <p>...</p>
+                                <p>Efetuar Pedido</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=pedido&pg=cozinha" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Listar Pedido</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="home.php?fd=pedido&pg=consulta" class="nav-link">
+                                <i class="fa fa-circle-o nav-icon"></i>
+                                <p>Consultar Pedidos</p>
                             </a>
                         </li>
                     </ul>
-                </li>-->
+                </li>
                 <!-- <li class="nav-item has-treeview">
                     <a href="https://github.com/Vengicx/ffsplus/" target="_blank" class="nav-link">
                         <i class="nav-icon fa fa-github"></i>

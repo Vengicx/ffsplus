@@ -3,7 +3,7 @@
         header("Location: ./index.php");
         exit;
     }
-    
+ 
 ?>
 <style>
     .materia-prima{
@@ -20,7 +20,7 @@
     <h1 class="text-center">Cadastro de Nova Pizza</h1>
     
     <div class="row">
-    <form name="materiaprimas" action="home.php?fd=salvar&pg=pizza" method="post">
+    <form name="materiaprimas" action="#" method="post">
         <div class="card carrinho" style="width: 20em;">
             <div class="card-body">
                 <h5 class="card-title">Cadastro de Novo Produto</h5>
@@ -28,23 +28,27 @@
               <table class="table table-striped text-center">
                   <thead>
                       <tr>
-                          <th scope="col">Qtd</th>
+                          <th scope="col">ID</th>
                           <th scope="col">Matéria-Prima</th>
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
-                          <td>2</td>
-                          <td title="Nome completo do produto">Mussarela</td>
-                      </tr>
-                      <tr>
-                          <td>1</td>
-                          <td title="Nome completo do produto">Trigo</td>
-                      </tr>
-                      <tr>
-                          <td>10</td>
-                          <td title="Nome completo do produto">Tomate</td>
-                      </tr>
+                    <?php
+                    	if(isset($_POST["id"])){
+                            $id = $_POST["id"];
+
+                            foreach ($id as $values){
+                                
+                                echo "<tr>
+                                        <td>$values</td>
+                                        <td>Nome</td>
+                                </tr>";
+                                
+                            }  
+                    
+                        }
+                            
+                    ?>
                   </tbody>
               </table>
             <div class="card-body">
@@ -72,6 +76,7 @@
         echo "<div class='card materia-prima col-md-3' >
                   <div class='card-body'>
                       <h5 class='card-title' title='$titulo'>$nome</h5>
+                      <p class='card-text'>ID: $id </p>
                       <p class='card-text'>Custo: R$ $precoCompra </p>
                       <p class='card-text'>Em Estoque: $quantidade </p> 
                       <div data-toggle='buttons'>

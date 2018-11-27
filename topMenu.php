@@ -21,16 +21,17 @@
             </div>
         </li>
     </ul> -->
-    <div class="collapse navbar-collapse float-right" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto ">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Usuário
                 <i class="fa fa-user-circle"></i></a>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
                     <a class="nav-link" href="sair.php"><i class="fa fa-power-off"></i> Logout</a>
                     <a class="nav-link" href="home.php?fd=cadastro&pg=senha"><i class = "fa fa-key"></i> Alterar Senha</a>
+                </div>
             </li>
         </ul>
       </div>

@@ -24,22 +24,7 @@
 
 	include "./app/conecta.php";
 	
-	$pdo->beginTransaction();
+	var_dump($codigo);
+
 	
-	$sql = 'INSERT INTO materiaprima_produto (memberID, programID) VALUES ';
-	$insertQuery = array();
-	$insertData = array();
-	foreach ($data as $row) {
-	    $insertQuery[] = '(?, ?)';
-	    $insertData[] = $memberid;
-	    $insertData[] = $row;
-	}
-
-	if (!empty($insertQuery)) {
-	    $sql .= implode(', ', $insertQuery);
-	    $stmt = $db->prepare($sql);
-	    $stmt->execute($insertData);
-	}
-
-	$pdo->commit();
 
