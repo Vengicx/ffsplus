@@ -137,6 +137,7 @@
 			$consulta->bindParam(':cep', $cep);
 			$consulta->bindParam(':estado', $estado);
 			$consulta->bindParam(':nascimento', $nascimento);
+			$consulta->bindParam(':numero', $numero);
 
 		}else{
 			$sql = "UPDATE usuario SET nome = :nome, senha = :senha, cpf = :cpf, endereco = :endereco, telefone = :telefone, rg = :rg, email = 

@@ -50,7 +50,7 @@
     </div>
     <div class="form-group">
         <label for="login">Login:</label>
-        <input type="text" name="login" class="form-control" required <?=$labelLogin?> placeholder="Digite o login" value="<?=$login?>">
+        <input type="text" name="login" class="form-control" id="validalogin" onblur="verificaLogin(this.value)" required <?=$labelLogin?> placeholder="Digite o login" value="<?=$login?>">
     </div>
     <div class="form-group">
         <label for="senha">Senha:</label>
@@ -101,6 +101,23 @@
     </div>
 </form>
 <script>
+    function verificaLogin(login) {
+		$.get("app/validaLogin.php",
+			{
+				login:login
+			},
+			function(data){
+				if ( data != "" ) {
+					//mostrar o retorno da execução do arquivo
+					alert(data);
+					//limpar o campo login
+					$("#validalogin").val('');
+					//focar no campo
+					$("#validalogin").focus();
+				}
+			});
+	}
+    
     window.onload=()=>{
         let tipo = "<?=$tipoUsuario?>";
 

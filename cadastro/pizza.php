@@ -34,20 +34,23 @@
                   </thead>
                   <tbody>
                     <?php
-                    	if(isset($_POST["id"])){
-                            $id = $_POST["id"];
+                        include_once "app/funcoes.php";
 
-                            foreach ($id as $values){
-                                
+                    	if(isset($_POST["str"])){
+                            $str = $_POST["str"];
+
+                            foreach ($str as $values){                          
+
+                                $values = formMateria($values); 
+                                $formNome = $values['nome'];
+                                $formId = $values['id'];
+                               
                                 echo "<tr>
-                                        <td>$values</td>
-                                        <td>Nome</td>
-                                </tr>";
-                                
-                            }  
-                    
-                        }
-                            
+                                        <td>$formId</td>
+                                        <td>$formNome</td>
+                                    </tr>";                            
+                            }      
+                        }         
                     ?>
                   </tbody>
               </table>
@@ -58,9 +61,8 @@
         </div>
 <?php
     require_once "./app/conecta.php";
-    require_once "./app/funcoes.php";
 
-    $consulta = $pdo->prepare("SELECT * FROM materiaprima order by nome");
+    $consulta = $pdo->prepare("SELECT * FROM materiaprima ORDER BY nome");
     $consulta->execute();
 
     while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
@@ -72,7 +74,7 @@
         $titulo = $nome;
         $nome = limitarTexto($nome, 17);
 
-
+        $str = $id.$titulo;
         echo "<div class='card materia-prima col-md-3' >
                   <div class='card-body'>
                       <h5 class='card-title' title='$titulo'>$nome</h5>
@@ -81,7 +83,7 @@
                       <p class='card-text'>Em Estoque: $quantidade </p> 
                       <div data-toggle='buttons'>
                           <label class='btn btn-primary'>
-                              <input type='checkbox' autocomplete='off' name='id[]' value='$id'> Adicionar
+                              <input type='checkbox' autocomplete='off' name='str[]' value='$str'> Adicionar
                           </label>
                       </div>
                   </div>
