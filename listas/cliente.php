@@ -31,6 +31,8 @@
 	$query = $pdo->prepare($sql);
 	$query->execute();
 
+	$tela = "usuario";
+
 	while($data = $query->fetch(PDO::FETCH_OBJ)){
 		$id = $data->id;
 		$nome = $data->usuario_nome;
@@ -70,4 +72,14 @@
         } );
 
 	});
+
+	function excluir(id,nome) {
+		//pergunta e confirmar
+		if (confirm("Deseja realmente excluir "+nome+"?")){
+			//mandar excluir
+			link = "home.php?fd=excluir&pg=excluircadastro&tela=<?=$tela?>&id="+id;
+			//chamar o link
+			location.href = link;
+		}
+	}
 </script>
