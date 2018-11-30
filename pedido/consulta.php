@@ -9,7 +9,7 @@
 	<h1 class="text-center">Lista de Pedidos</h1>
 	<br>
 
-	<a href="home.php?fd=pedido&pg=cadastro" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
+	<a href="home.php?fd=pedido&pg=cadastro" class="btn btn-primary float-right"><i class="far fa-plus-square"></i> Novo</a>
 	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
@@ -62,7 +62,7 @@
 	$(document).ready(function(){
 		 $('#tabela').dataTable( {
             "language": {
-                "url": "js/Portuguese-Brasil.json"
+                "url": "plugins/js/Portuguese-Brasil.json"
             }
         } );
 

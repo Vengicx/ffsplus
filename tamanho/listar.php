@@ -4,12 +4,12 @@
         exit;
     }
 
-	$tela = $_GET["pg"];
+	$tela = $_GET["fd"];
 ?>
 	<h1 class="text-center">Lista de Tamanhos</h1>
 	<br>
 
-	<a href="home.php?fd=cadastro&pg=tamanho" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
+	<a href="home.php?fd=tamanho&pg=cadastro" class="btn btn-primary float-right"><i class="far fa-plus-square"></i> Novo</a>
 	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
@@ -25,7 +25,7 @@
 
 	include "./app/conecta.php";
 
-	$sql = "select * from tamanho order by qtdPedacos";
+	$sql = "SELECT * FROM tamanho ORDER BY qtdPedacos";
 	$query = $pdo->prepare($sql);
 	$query->execute();
 
@@ -41,8 +41,8 @@
 				<td>$qtdPedacos</td>
 				<td>$qtdSabores</td>
 				<td>
-					<a class='btn btn-success' href='home.php?fd=cadastro&pg=tamanho&id=$id'><i class='fa fa-pencil'></i></a>
-					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+					<a class='btn btn-success' href='home.php?fd=tamanho&pg=cadastro&id=$id'><i class='far fa-edit'></i></a>
+					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
 				</td>
 			  </tr>";
 
@@ -53,7 +53,7 @@
 	$(document).ready(function(){
 		 $('#tabela').dataTable( {
             "language": {
-                "url": "js/Portuguese-Brasil.json"
+                "url": "plugins/js/Portuguese-Brasil.json"
             }
         } );
 

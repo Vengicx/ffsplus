@@ -41,7 +41,7 @@
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Cliente</h3>
 </div>
-<form method="post" action="home.php?fd=salvar&pg=cliente" style="padding: 50px;">
+<form method="post" action="home.php?fd=cliente&pg=salvar" style="padding: 50px;">
     <div class="form-group">
         <label for="id">ID: </label>
         <input type="text" name="id" readonly <?=$labelId?> class="form-control" id="labelID" value="<?=$id?>">

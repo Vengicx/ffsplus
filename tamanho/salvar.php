@@ -60,7 +60,7 @@
 		}
 
 		if($consulta->execute()){
-			echo "<script>alert('Tamanho $alert com sucesso!');location.replace('home.php?fd=listas&pg=tamanho')</script>";
+			echo "<script>alert('Tamanho $alert com sucesso!');location.replace('home.php?fd=tamanho&pg=listar')</script>";
 			exit;
 
 		}else{

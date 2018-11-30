@@ -4,7 +4,7 @@
         exit;
     }
 ?>  
-<form method="post" action="home.php?fd=salvar&pg=senha" style="padding: 50px;">
+<form method="post" action="home.php?fd=usuario&pg=salvarsenha" style="padding: 50px;">
     <div class="form-group">
         <label for="senha">Senha Atual: </label>
         <input type="password" name="senhaAntiga" class="form-control" required>

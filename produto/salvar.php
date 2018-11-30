@@ -45,11 +45,11 @@
 			$consulta->bindParam(':id', $id);
 
 			if($consulta->execute()){
-				echo "<script>alert('Quantidade adicionada com sucesso');location.replace('home.php?fd=listas&pg=produto');</script>";
+				echo "<script>alert('Quantidade adicionada com sucesso');location.replace('home.php?fd=produto&pg=listar');</script>";
 				$pdo->commit();
 				exit;
 			}else{
-				echo "<script>alert('Erro ao adicionar quantidade');location.replace('home.php?fd=listas&pg=produto');</script>";
+				echo "<script>alert('Erro ao adicionar quantidade');location.replace('home.php?fd=produto&pg=listar');</script>";
 				$pdo->rollBack();	
 				exit;
 			}
@@ -96,7 +96,7 @@
 
 		if($consulta->execute()){
 			echo "<script>alert('Produto $alert com sucesso');
-					location.replace('home.php?fd=listas&pg=produto');
+					location.replace('home.php?fd=produto&pg=listar');
 				  </script>";
 
 		}else{

@@ -4,12 +4,12 @@
         exit;
     }
 
-	$tela = $_GET["pg"];
+	$tela = $_GET["fd"];
 ?>
 	<h1 class="text-center">Lista de Produtos</h1>
 	<br>
 
-	<a href="home.php?fd=cadastro&pg=produto" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
+	<a href="home.php?fd=produto&pg=cadastro" class="btn btn-primary float-right"><i class="far fa-plus-square"></i> Novo</a>
 	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
@@ -41,7 +41,7 @@
 		$precoVenda = str_replace(".", ",", $precoVenda);
 
 		echo "<tr>
-				<form action=\"home.php?fd=salvar&pg=produto\" method=\"post\">
+				<form action=\"home.php?fd=produto&pg=salvar\" method=\"post\">
 				<td><input type=\"hidden\" name=\"id\" value=\"$id\">$id</td>
 				<td>$nome</td>
 				<td>R$ $precoCompra</td>
@@ -49,9 +49,9 @@
 				<td>$quantidade</td>
 				<td><input type=\"number\" name=\"quantidade\" required></td>
 				<td>
-					<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='fa fa-plus'></i></button>
-					<a class='btn btn-success' href='home.php?fd=cadastro&pg=produto&id=$id'><i class='fa fa-pencil'></i></a>
-					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+					<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='far fa-plus-square'></i></button>
+					<a class='btn btn-success' href='home.php?fd=produto&pg=salvar&id=$id'><i class='far fa-edit'></i></a>
+					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
 				</td>
 			  </tr>
 			  </form>";
@@ -63,7 +63,7 @@
 	$(document).ready(function(){
 		 $('#tabela').dataTable( {
             "language": {
-                "url": "js/Portuguese-Brasil.json"
+                "url": "plugins/js/Portuguese-Brasil.json"
             }
         } );
 

@@ -81,7 +81,7 @@
         }
 
         if($consulta->execute()){
-            echo "<script>alert('$alert $acao com sucesso!');location.replace('home.php?fd=listas&pg=estadocidade')</script>";
+            echo "<script>alert('$alert $acao com sucesso!');location.replace('home.php?fd=cidade&pg=listar')</script>";
             exit;
             
         }else{

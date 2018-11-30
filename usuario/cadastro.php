@@ -39,7 +39,7 @@
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Usuário</h3>
 </div>
-<form method="post" action="home.php?fd=salvar&pg=usuario" class="form-ffs" style="padding: 50px;">
+<form method="post" action="home.php?fd=usuario&pg=salvar" class="form-ffs" style="padding: 50px;">
     <div class="form-group">
         <label for="id">ID: </label>
         <input type="text" name="id" <?=$labelId?> readonly class="form-control" id="labelID" value="<?=$id?>">

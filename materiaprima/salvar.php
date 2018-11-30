@@ -47,12 +47,12 @@
 			$consulta->bindParam(':id', $id);
 
 			if($consulta->execute()){
-				echo "<script>alert('Quantidade adicionada com sucesso');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
+				echo "<script>alert('Quantidade adicionada com sucesso');location.replace('home.php?fd=materiaprima&pg=listar');</script>";
 				$pdo->commit();
 				exit;
 				
 			}else{
-				echo "<script>alert('Erro ao adicionar quantidade');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
+				echo "<script>alert('Erro ao adicionar quantidade');location.replace('home.php?fd=materiaprima&pg=listar');</script>";
 				$pdo->rollBack();	
 				exit;
 
@@ -109,7 +109,7 @@
 		}
 
     	if($consulta->execute()){
-			echo "<script>alert('Matéria-Prima $alert com sucesso');location.replace('home.php?fd=listas&pg=materiaprima');</script>";
+			echo "<script>alert('Matéria-Prima $alert com sucesso');location.replace('home.php?fd=materiaprima&pg=listar');</script>";
 			exit;
 
     	}else{

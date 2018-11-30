@@ -1,4 +1,4 @@
-<nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+<nav class="main-header navbar navbar-expand navbar-light border-bottom">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -30,7 +30,7 @@
                 </a>
                 <div class="dropdown-menu float-right" aria-labelledby="navbarDropdown">
                     <a class="nav-link" href="sair.php"><i class="fa fa-power-off"></i> Logout</a>
-                    <a class="nav-link" href="home.php?fd=cadastro&pg=senha"><i class = "fa fa-key"></i> Alterar Senha</a>
+                    <a class="nav-link" href="home.php?fd=usuario&pg=senha"><i class = "fa fa-key"></i> Alterar Senha</a>
                 </div>
             </li>
         </ul>

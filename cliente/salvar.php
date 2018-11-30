@@ -167,12 +167,12 @@
 		}
 
 		if($consulta->execute()){
-			echo "<script>alert('Cliente $alert com sucesso');location.replace('home.php?fd=listas&pg=cliente');</script>";
+			echo "<script>alert('Cliente $alert com sucesso');location.replace('home.php?fd=cliente&pg=listar');</script>";
 
 		}else{
 			echo $consulta->errorInfo()[2];
 			exit;
-			echo "<script>alert('Erro ao inserir/modificar cliente');location.replace('home.php?fd=listas&pg=cliente');</script>";
+			echo "<script>alert('Erro ao inserir/modificar cliente');location.replace('home.php?fd=cliente&pg=listar');</script>";
 		}
 
 	}//fim do $_POST

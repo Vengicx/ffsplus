@@ -16,14 +16,16 @@
   <title>Faster Food Service</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/adminlte.min.css">
-  <link rel="stylesheet" href="css/jquery.dataTables.min.css">
+  <!--<link rel="stylesheet" href="plugins/css/font-awesome.min.css">-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" 
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="plugins/css/adminlte.min.css">
+  <link rel="stylesheet" href="plugins/css/jquery.dataTables.min.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery.dataTables.min.js"></script>
-  <script src="js/dataTables.bootstrap4.js"></script>
+  <script src="plugins/js/jquery.min.js"></script>
+  <script src="plugins/js/jquery.dataTables.min.js"></script>
+  <script src="plugins/js/dataTables.bootstrap4.js"></script>
 
 
 </head>
@@ -82,13 +84,13 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- nao sei -->
-<script src="js/bootstrap.bundle.min.js"></script>4
+<script src="plugins/js/bootstrap.bundle.min.js"></script>4
 <!-- inputmask das coisas -->
-<script src="js/bootstrap-inputmask.min.js"></script>
+<script src="plugins/js/bootstrap-inputmask.min.js"></script>
 <!-- data tables -->
 
 <!-- funcoes do layout -->
-<script src="js/adminlte.js"></script>
+<script src="plugins/js/adminlte.js"></script>
 
 </body>
 </html>

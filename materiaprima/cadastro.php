@@ -4,72 +4,88 @@
         exit;
     }
 
-    $labelQtd = $labelId = "";
-
-    $id = $nome = $precoCompra = $precoVenda = $quantidade = "";
+    $precoCompra = $precoVenda = $nome = $id = $qtdPedacos = $quantidade = $precoUnidade = $labelId = $labelQtd = "";
 
     if(isset($_GET["id"])){
-        $id = $_GET["id"];
+        $id = trim ($_GET["id"]);
 
-        include "./app/conecta.php";
+        include_once "app/conecta.php";
 
-        $sql = "SELECT * FROM produto WHERE id = ?";
+        $sql = "SELECT * FROM materiaprima WHERE id = ? LIMIT 1";
         $consulta = $pdo->prepare($sql);
         $consulta->bindParam(1, $id);
-
+        
         if($consulta->execute()){
             $dados = $consulta->fetch(PDO::FETCH_OBJ);
                 $nome = $dados->nome;
                 $precoCompra = $dados->precoCompra;
-                $precoVenda = $dados->precoVenda;
                 $quantidade = $dados->quantidade;
+                $precoUnidade = $dados->precoUnidade;
+                $qtdPedacos = $dados->qtdPedacos;
 
                 $labelQtd = "readonly";
                 $labelId = "required";
 
                 $precoCompra = str_replace(".", ",", $precoCompra);
-                $precoVenda = str_replace(".", ",", $precoVenda);
         }
+        
     }
+
 ?>
 <div class="card-header">
-    <h3 class="card-title text-center">Cadastro de Produto</h3>
+    <h3 class="card-title text-center">Cadastro de Matéria-Prima</h3>
 </div>
-<form method="post" action="home.php?fd=salvar&pg=produto" style="padding: 50px;">
+<form method="post" action="home.php?fd=materiaprima&pg=salvar" style="padding: 50px;">
         <div class="form-group">
             <label for="nome">ID:</label>
-            <input type="text" class="form-control" readonly name="id" value="<?=$id?>" <?=$labelId?>>
-            <br>
+            <input type="text" class="form-control" readonly <?=$labelId?> name="id" value="<?=$id?>">
+        </div>
+        <div class="form-group">
             <label for="nome">Nome:</label>
-            <input type="text" class="form-control" name="nome" placeholder="Digite o nome do Produto" value="<?=$nome?>" required>
+            <input type="text" class="form-control" name="nome" placeholder="Digite o nome" required value="<?=$nome?>">
         </div>
         <div class="row">
             <div class="form-group col-4">
                 <label for="precoCompra">Preço Compra:</label>
-                <input type="text" name="precoCompra" class="form-control" onKeyPress="return(moeda(this,'.',',',event))" placeholder="Digite o Preço de Compra" value="<?=$precoCompra?>" required>
+                <input type="text" name="precoCompra" class="form-control" onKeyPress="return(moeda(this,'.',',',event))" placeholder="Digite o Preço de Compra" id="precoCompra" value="<?=$precoCompra?>" required>
             </div>
             <div class="form-group col-4">
-                <label for="precoVenda">Preço Venda:</label>
-                <input type="text" name="precoVenda" class="form-control" onKeyPress="return(moeda(this,'.',',',event))" placeholder="Digite o preço de Venda" value="<?=$precoVenda?>" required>
+                <label for="qtdPedacos">Quantidade por Pedaço:</label>
+                <input type="number" id="qtdPedacos" name="qtdPedacos" value="<?=$qtdPedacos?>" class="form-control" placeholder="Digite a Quantidade" required onkeyup="calcular()" required>
+            </div>
+            <div class="form-group col-4">
+                <label for="precoUnidade">Preço por Unidade:</label>
+                <input type="number" name="precoUnidade" id="resultado" onKeyPress="return(moeda(this,'.',',',event))" class="form-control" required readonly value="<?=$precoUnidade?>">
             </div>
             <div class="form-group col-4">
                 <label for="quantidade">Quantidade:</label>
-                <input type="number" name="quantidade" class="form-control" placeholder="Digite a Quantidade" <?=$labelQtd?> value="<?=$quantidade?>">
+                <input type="number" name="quantidade" class="form-control" <?=$labelQtd?> value="<?=$quantidade?>">
             </div>
         </div><!-- fim do row -->
     <div class="card-footer text-center mt-5">
         <?php 
             if(isset($_GET["id"])){
                 $btnForm = "Alterar";
+
             }else{
                 $btnForm = "Cadastrar";
+
             }
 
         ?>
             <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
     </div>
 </form>
-<script language="javascript">   
+<script language="javascript">  
+
+     function calcular(){
+        var precoCompra = parseInt(document.getElementById('precoCompra').value);
+        var qtdPedacos = parseInt(document.getElementById('qtdPedacos').value);
+        var preco = precoCompra / qtdPedacos;
+        var resultado = parseFloat(document.getElementById('resultado').value = preco.toFixed(2));
+        
+    }
+
     function moeda(a, e, r, t) {
         let n = ""
           , h = j = 0

@@ -89,7 +89,7 @@
 
 		if($query->execute()){
 			echo "<script>alert('Usuário $alert com sucesso');
-					location.replace('home.php?fd=listas&pg=usuario');
+					location.replace('home.php?fd=usuario&pg=listar');
 				</script>";
 
 		}else{

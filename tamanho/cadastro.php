@@ -29,7 +29,7 @@
 <div class="card-header">
     <h3 class="card-title text-center">Cadastro de Tamanho</h3>
 </div>
-<form method="post" action="home.php?fd=salvar&pg=tamanho" style="padding: 50px;">
+<form method="post" action="home.php?fd=tamanho&pg=salvar" style="padding: 50px;">
         <div class="form-group">
             <label for="nome">ID:</label>
             <input type="text" name="id" class="form-control" value="<?=$id?>" readonly <?=$labelId?>>

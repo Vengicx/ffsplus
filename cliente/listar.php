@@ -8,7 +8,7 @@
 
 	<h1 class="text-center">Lista de Clientes</h1>
 	<br>
-	<a href="home.php?fd=cadastro&pg=cliente" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
+	<a href="home.php?fd=cliente&pg=cadastro" class="btn btn-primary float-right"><i class="far fa-plus-square"></i> Novo</a>
 	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
@@ -56,8 +56,8 @@
 				<td>$rg2</td>
 				<td>$estado</td>
 				<td>$cidade</td>
-				<td><a class='btn btn-success' href='home.php?fd=cadastro&pg=cliente&id=$id'><i class='fa fa-pencil'></i></a>
-					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+				<td><a class='btn btn-success' href='home.php?fd=cliente&pg=cadastro&id=$id'><i class='far fa-edit'></i></a>
+					<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
 				</td>
 			  </tr>";
 	}
@@ -67,7 +67,7 @@
 	$(document).ready(function(){
 		 $('#tabela').dataTable( {
             "language": {
-                "url": "js/Portuguese-Brasil.json"
+                "url": "plugins/js/Portuguese-Brasil.json"
             }
         } );
 

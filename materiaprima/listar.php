@@ -4,12 +4,12 @@
         exit;
     }
 
-	$tela = $_GET["pg"];
+	$tela = $_GET["fd"];
 ?>
 	<h1 class="text-center">Lista de Matéria-Prima</h1>
 	<br>
 
-	<a href="home.php?fd=cadastro&pg=materiaprima" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Novo</a>
+	<a href="home.php?fd=materiaprima&pg=cadastro" class="btn btn-primary float-right"><i class="far fa-plus-square"></i> Novo</a>
 	<table class="table table-bordered table-striped" id="tabela">
 		<thead>
 			<tr>
@@ -52,9 +52,9 @@
 						<td>R$ $precoUnidade</td>
 						<td><input type=\"number\" name=\"quantidade\" required></td>
 						<td>
-							<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='fa fa-plus'></i></button>
-							<a class='btn btn-success' href='home.php?fd=cadastro&pg=materiaprima&id=$id'><i class='fa fa-pencil'></i></a>
-							<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='fa fa-trash'></i></a>
+							<button class='btn btn-primary btnAdicionar' type='submit' href='#'><i class='far fa-plus-square'></i></button>
+							<a class='btn btn-success' href='home.php?fd=materiaprima&pg=cadastro&id=$id'><i class='far fa-edit'></i></a>
+							<a href=\"javascript:excluir($id,'$nome')\" class='btn btn-danger'><i class='far fa-trash-alt'></i></a>
 						</td>
 					</tr>
 					</form>";
@@ -65,7 +65,7 @@
 	$(document).ready(function(){
 		 $('#tabela').dataTable( {
             "language": {
-                "url": "js/Portuguese-Brasil.json"
+                "url": "plugins/js/Portuguese-Brasil.json"
             }
         } );
 
