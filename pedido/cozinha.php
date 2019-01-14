@@ -22,7 +22,6 @@
     $consulta = $pdo->prepare($sql);
         
     $consulta->execute();
-
         
     $c = 0; //contador 
     while($dados = $consulta->fetch(PDO::FETCH_OBJ)){//ele só vai entrar no while se o $dados for verdadeiro
@@ -35,11 +34,11 @@
         $andamento = $dados->andamento_id;
             
         if($andamento == "1"){
-            $botao = "<a href='home.php?fd=salvar&pg=prepararPedido&id=$id' class='btn btn-primary'>Preparar</a>";
+            $botao = "<a href='home.php?fd=pedido&pg=prepararPedido&id=$id' class='btn btn-primary'>Preparar</a>";
             $botaoWarning = "";
 
         }elseif($andamento == "2"){
-            $botao = "<a href='home.php?fd=salvar&pg=prepararPedido&id=$id' class='btn btn-success'>Pronto!</a>";
+            $botao = "<a href='home.php?fd=pedido&pg=prepararPedido&id=$id' class='btn btn-success'>Pronto!</a>";
             $botaoWarning = "<a href='#' class='btn btn-warning'>Preparando...</a>";
 
         }
