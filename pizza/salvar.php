@@ -22,7 +22,6 @@
 
 	}    
 
-	include "./app/conecta.php";
 	
 	var_dump($codigo);
 

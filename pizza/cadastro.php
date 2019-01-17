@@ -18,47 +18,7 @@
     }
 </style>
     <h1 class="text-center">Cadastro de Nova Pizza</h1>
-    
-    <div class="row">
-    <form name="materiaprimas" action="#" method="post">
-        <div class="card carrinho" style="width: 20em;">
-            <div class="card-body">
-                <h5 class="card-title">Cadastro de Novo Produto</h5>
-            </div>
-              <table class="table table-striped text-center">
-                  <thead>
-                      <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Matéria-Prima</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                        include_once "app/funcoes.php";
-
-                    	if(isset($_POST["str"])){
-                            $str = $_POST["str"];
-
-                            foreach ($str as $values){                          
-
-                                $values = formMateria($values); 
-                                $formNome = $values['nome'];
-                                $formId = $values['id'];
-                               
-                                echo "<tr>
-                                        <td>$formId</td>
-                                        <td>$formNome</td>
-                                    </tr>";                            
-                            }      
-                        }         
-                    ?>
-                  </tbody>
-              </table>
-            <div class="card-body">
-                <a href="#" class="btn btn-success">Cadastrar</a>
-                <a href="#" class="btn btn-warning">Limpar</a>
-            </div>
-        </div>
+<form action="#" methd></form>
 <?php
     require_once "./app/conecta.php";
 
@@ -71,27 +31,50 @@
         $quantidade = $dados->quantidade;
         $precoCompra = $dados->precoCompra;
 
-        $titulo = $nome;
-        $nome = limitarTexto($nome, 17);
-
-        $str = $id.$titulo;
-        echo "<div class='card materia-prima col-md-3' >
+        echo "<div class='card materia-prima col-md-2' >
                   <div class='card-body'>
-                      <h5 class='card-title' title='$titulo'>$nome</h5>
+                      <h5 class='card-title' title='$nome'>$nome</h5>
                       <p class='card-text'>ID: $id </p>
                       <p class='card-text'>Custo: R$ $precoCompra </p>
                       <p class='card-text'>Em Estoque: $quantidade </p> 
-                      <div data-toggle='buttons'>
-                          <label class='btn btn-primary'>
-                              <input type='checkbox' autocomplete='off' name='str[]' value='$str'> Adicionar
-                          </label>
-                      </div>
+                      <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#$id'>Adicionar</button>
                   </div>
-              </div>";
+              </div> 
+              <div class=\"modal fade\" id=\"$id\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
+                <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
+                    <div class=\"modal-content\">
+                        <div class=\"modal-header\">
+                            <h5 class=\"modal-title\" id=\"exampleModalCenterTitle\">Adicionar ao Carrinho</h5>
+                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
+                            <span aria-hidden=\"true\">&times;</span>
+                            </button>
+                        </div>
+                        <div class=\"modal-body\">
+                            <form method='post' action=''>
+                            <label for='medida'>Selecione a Medida</label>
+                            <select name='medida' class='form-control' required>
+                                <option value=''>Selecione a medida</option>
+                                <option value='kg'>Kilos - KG</option>
+                                <option value='g'>Gramas - G</option>
+                                <option value='l'>Litros - L</option>
+                                <option value='ml'>Miligramas - ML</option>   
+                            </select>
+                            <br>
+                            <label for='quantidade'>Quantidade</label>
+                            <input name='quantidade' type='number' class='form-control' required>
+                        </div>
+                        <div class=\"modal-footer\">
+                            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancelar</button>
+                            <button type=\"submit\" class=\"btn btn-primary\">Salvar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>";
+
     
     }
 
 ?> 
-    <button type="submit" class="btn btn-success">GO!</button> 
     </form>
     </div>

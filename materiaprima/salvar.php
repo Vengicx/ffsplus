@@ -31,7 +31,7 @@
     		$quantidade = trim ($_POST["quantidade"]);
     		
     		if($quantidade <= 0){
-    			echo "<script>alert('Impossível adicionar estoque negativo');history.back();</script>";
+    			echo "<script>alert('Impossível adicionar estoque negativo');location.href='home.php?fd=materiaprima&pg=listar';</script>";
     			exit;
     		}
     	}
