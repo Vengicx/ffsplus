@@ -3,78 +3,60 @@
         header("Location: ./index.php");
         exit;
     }
- 
+
 ?>
-<style>
-    .materia-prima{
-        float: left;
-        margin: 10px;
-        padding: -5px;
-    }
-
-    .carrinho {
-      float: right;
-      margin: 2em;
-    }
-</style>
-    <h1 class="text-center">Cadastro de Nova Pizza</h1>
-<form action="#" methd></form>
-<?php
-    require_once "./app/conecta.php";
-
-    $consulta = $pdo->prepare("SELECT * FROM materiaprima ORDER BY nome");
-    $consulta->execute();
-
-    while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
-        $id = $dados->id;
-        $nome = $dados->nome;
-        $quantidade = $dados->quantidade;
-        $precoCompra = $dados->precoCompra;
-
-        echo "<div class='card materia-prima col-md-2' >
-                  <div class='card-body'>
-                      <h5 class='card-title' title='$nome'>$nome</h5>
-                      <p class='card-text'>ID: $id </p>
-                      <p class='card-text'>Custo: R$ $precoCompra </p>
-                      <p class='card-text'>Em Estoque: $quantidade </p> 
-                      <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#$id'>Adicionar</button>
-                  </div>
-              </div> 
-              <div class=\"modal fade\" id=\"$id\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalCenterTitle\" aria-hidden=\"true\">
-                <div class=\"modal-dialog modal-dialog-centered\" role=\"document\">
-                    <div class=\"modal-content\">
-                        <div class=\"modal-header\">
-                            <h5 class=\"modal-title\" id=\"exampleModalCenterTitle\">Adicionar ao Carrinho</h5>
-                            <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-                            <span aria-hidden=\"true\">&times;</span>
-                            </button>
-                        </div>
-                        <div class=\"modal-body\">
-                            <form method='post' action=''>
-                            <label for='medida'>Selecione a Medida</label>
-                            <select name='medida' class='form-control' required>
-                                <option value=''>Selecione a medida</option>
-                                <option value='kg'>Kilos - KG</option>
-                                <option value='g'>Gramas - G</option>
-                                <option value='l'>Litros - L</option>
-                                <option value='ml'>Miligramas - ML</option>   
-                            </select>
-                            <br>
-                            <label for='quantidade'>Quantidade</label>
-                            <input name='quantidade' type='number' class='form-control' required>
-                        </div>
-                        <div class=\"modal-footer\">
-                            <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cancelar</button>
-                            <button type=\"submit\" class=\"btn btn-primary\">Salvar</button>
-                            </form>
-                        </div>
+<div class="card-header">
+    <h3 class="card-title text-center">Cadastro de Produto</h3>
+</div>
+        <form method="post" action="home.php?fd=pizza&pg=salvar" style="padding: 30px;">
+            <div class="form-group">
+                <label for="id">ID: </label>
+                <input type="text" name="id" readonly class="form-control">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nome">Nome:</label>
+                        <input type="text" name="nome" required class="form-control">
                     </div>
                 </div>
-                </div>";
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="tamanho">Tamanho</label>
+                        <select class="form-control" name="tamanho">  
+                            <?php
+                                include "./app/conecta.php";
 
-    
-    }
+                                $sql = "SELECT id,nome FROM tamanho";
+                                $consulta = $pdo->prepare($sql);
 
-?> 
-    </form>
-    </div>
+                                $consulta->execute();
+                                while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
+                                    echo "<option value='$dados->id'>$dados->nome</input>";
+
+                                }
+
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="precoVenda">Valor de Venda:</label>
+                <input type="number" name="precoVenda" required class="form-control">
+            </div>
+            <div class="card-footer text-center mt-5">
+                <?php 
+                    if(isset($_GET["id"])){
+                        $btnForm = "Alterar";
+
+                    }else{
+                        $btnForm = "Cadastrar";
+
+                    }
+
+                ?>
+                    <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
+            </div>
+        </form>
+</form>
