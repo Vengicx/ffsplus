@@ -21,6 +21,7 @@
         integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="plugins/css/adminlte.min.css">
   <link rel="stylesheet" href="plugins/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="plugins/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <script src="plugins/js/jquery.min.js"></script>
