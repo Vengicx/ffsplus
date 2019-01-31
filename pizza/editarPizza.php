@@ -89,7 +89,7 @@
                                         </button>
                                     </div>
                                     <div class=\"modal-body\">
-                                        <form method='post' action='home.php?fd=pizza&pg=salvarMateria'>
+                                        <form method='post' action='home.php?fd=pizza/materia&pg=salvarMateria'>
                                             <input name='idPizza' type='hidden' value='$idPizza'>
                                             <label for='id'>ID: </label>
                                             <input name='id' class='form-control' value='$id' readonly>
@@ -119,7 +119,7 @@
                                         </button>
                                     </div>
                                     <div class=\"modal-body\">
-                                        <form method='post' action='home.php?fd=pizza&pg=deletarMateria'>
+                                        <form method='post' action='home.php?fd=pizza/materia&pg=deletarMateria'>
                                             <input name='idPizza' type='hidden' value='$idPizza'>
                                             <label for='id'>ID: </label>
                                             <input name='id' class='form-control' value='$id' readonly>
@@ -137,7 +137,7 @@
                         </div>";
 
                     }
-                    
+
                 }else{
                     echo "<script>alert('Nenhuma pizza selecionada');history.back();</script>";
                     exit;
@@ -167,10 +167,10 @@
                 while($dados2 = $consulta2->fetch(PDO::FETCH_OBJ)){
                     echo "
                     <tr>
-                    <td>$dados2->nome_materia</td>
-                    <td>$dados2->quantidade</td>
-                    <td>0,00</td>
-                </tr>
+                        <td>$dados2->nome_materia</td>
+                        <td>$dados2->quantidade</td>
+                        <td>0,00</td>
+                    </tr>
                     ";
                 }
 
