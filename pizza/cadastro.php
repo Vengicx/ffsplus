@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="tamanho">Tamanho</label>
-                        <select class="form-control" name="tamanho">  
+                        <select class="form-control" name="tamanho" required>  
                             <?php
                                 include "./app/conecta.php";
 
@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label for="precoVenda">Valor de Venda:</label>
-                <input type="number" name="precoVenda" required class="form-control">
+                <input type="text" name="precoVenda" required class="form-control">
             </div>
             <div class="card-footer text-center mt-5">
                 <?php 
@@ -59,4 +59,3 @@
                     <button type="submit" class="btn btn-primary"><?=$btnForm?></button>
             </div>
         </form>
-</form>

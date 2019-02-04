@@ -66,12 +66,12 @@
         <h3 class="text-center">Top Pizzas - Diário</h3>
         <hr>
         <table class="table table-bordered table-striped" id="tabela">
-                <thead>
-                    <tr>
-                        <td class="text-center">Nome</td>
-                        <td class="text-center">Quantidade Fabricada</td>
-                    </tr>
-                </thead>
+            <thead>
+                <tr>
+                    <td class="text-center">Nome</td>
+                    <td class="text-center">Quantidade Fabricada</td>
+                </tr>
+            </thead>
         <?php
             include "./app/conecta.php";
             $sql = "SELECT * FROM usuario WHERE not tipoUsuario = 3";
@@ -88,6 +88,6 @@
                     </tr>";
             }
         ?>
-	</table>
+	    </table>
     </div> <!-- fim do col md 6 -->
 </div><!-- fim do row -->

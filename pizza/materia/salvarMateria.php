@@ -31,7 +31,6 @@
             exit;
         }
             
-
     }else{
         echo "<script>alert('Selecione uma pizza para continuar');history.back();</script>";
         exit;
