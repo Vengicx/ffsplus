@@ -14,30 +14,39 @@
     <hr>
     <?php include_once "app/conecta.php";
 
-    $sql = ("SELECT pe.id AS id, u.nome AS nome_usuario, p.nome AS nome_produto, t.nome AS nome_tamanho, horaPedido, a.situacao AS situacao, pe.andamento_id AS andamento_id FROM pedido pe
-    INNER JOIN usuario u ON usuario_id = u.id
-    INNER JOIN produto p ON produto_id = p.id
-    INNER JOIN tamanho t ON tamanho_id = t.id
-    INNER JOIN andamento a ON andamento_id = a.id WHERE NOT andamento_id = 3 ");
+    $sql = ("SELECT 
+                pe.id AS id_pedido,
+                us.nome AS nome_usuario,
+                ta.nome AS nome_tamanho,
+                pr.nome AS nome_produto,
+                p_a.hora AS hora_inicio,
+                an.situacao AS nome_andamento 
+            
+            FROM pedido pe
+            INNER JOIN usuario us ON us.id = pe.usuario_id
+            INNER JOIN tamanho ta ON ta.id = pe.tamanho_id
+            INNER JOIN produto pr ON pr.id = pe.produto_id
+            INNER JOIN pedido_andamento p_a ON p_a.idPedido = pe.id
+            INNER JOIN andamento an ON an.id = p_a.idAndamento
+            WHERE NOT an.id = 3");
     $consulta = $pdo->prepare($sql);
         
     $consulta->execute();
         
     $c = 0; //contador 
     while($dados = $consulta->fetch(PDO::FETCH_OBJ)){//ele só vai entrar no while se o $dados for verdadeiro
-        $id = $dados->id;
+        $id = $dados->id_pedido;
         $usuario_nome = $dados->nome_usuario;
         $produto_nome = $dados->nome_produto;
         $tamanho_nome = $dados->nome_tamanho;
-        $horaPedido = $dados->horaPedido;
-        $situacao = $dados->situacao;
-        $andamento = $dados->andamento_id;
+        $horaPedido = $dados->hora_inicio;
+        $situacao = $dados->nome_andamento;
             
-        if($andamento == "1"){
+        if($situacao == "Pedido Realizado"){
             $botao = "<a href='home.php?fd=pedido&pg=prepararPedido&id=$id' class='btn btn-primary'>Preparar</a>";
             $botaoWarning = "";
 
-        }elseif($andamento == "2"){
+        }elseif($situacao == "Pedido em Produção"){
             $botao = "<a href='home.php?fd=pedido&pg=prepararPedido&id=$id' class='btn btn-success'>Pronto!</a>";
             $botaoWarning = "<a href='#' class='btn btn-warning'>Preparando...</a>";
 

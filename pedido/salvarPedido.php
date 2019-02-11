@@ -30,30 +30,35 @@
         }else{
 
             include "app/conecta.php";
+            
+            $pdo->beginTransaction();
 
             if(isset($id)){
-                //inserir
-                $sql = "INSERT INTO pedido (id, produto_id, tamanho_id, usuario_id, horaPedido, andamento_id) VALUES 
-                    (NULL, :produto_id, :tamanho_id, :usuario_id, NOW(), 1)";
+                
+                $sql = "INSERT INTO pedido (id, produto_id, tamanho_id, usuario_id) VALUES 
+                    (NULL, :produto_id, :tamanho_id, :usuario_id)";
 
                 $consulta = $pdo->prepare($sql);
                 $consulta->bindParam(':produto_id', $produto_id);
                 $consulta->bindParam(':usuario_id', $usuario_id);
                 $consulta->bindParam(':tamanho_id', $tamanho_id);
+                $consulta->execute();
 
-                if($consulta->execute()){
-                    echo "<script>alert('Pedido efetuado com sucesso');location.replace('home.php?fd=pedido&pg=cozinha')</script>";
-                    exit;
+                $lastInsert = $pdo->lastInsertId();
 
-                }else{
-                    echo "<script>alert('Erro ao efetuar pedido');history.back();</script>";
-                    exit;
+                $sql2 = "INSERT INTO pedido_andamento (idAndamento, hora, idPedido) VALUES (1, NOW(), :idPedido)";
+                
+                $consulta2 = $pdo->prepare($sql2);
+                
+                $consulta2->bindParam('idPedido', $lastInsert, PDO::PARAM_INT);
+                $consulta2->execute();
 
-                }
+                $pdo->commit();
 
             }else{
                 //atualizar
             }
+            
         }//fim do else
     
     }else{//fim do $_POST

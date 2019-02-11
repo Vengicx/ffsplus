@@ -6,13 +6,19 @@
 
     }
 
-	$consulta = $pdo->prepare("SELECT * FROM pedido where id = ?");
+	$consulta = $pdo->prepare("SELECT 
+								an.id AS id_andamento, 
+								pe.id AS id_pedido 
+								FROM pedido_andamento p_a 
+								INNER JOIN andamento an ON an.id = p_a.idAndamento
+								INNER JOIN pedido pe ON pe.id = p_a.idPedido
+								WHERE pe.id = ?");
 	$consulta->bindParam(1, $id);
 	$consulta->execute();
 	$dados = $consulta->fetch(PDO::FETCH_OBJ);
 	
-	if($dados->andamento_id == '2'){
-		$consulta = $pdo->prepare("UPDATE pedido set andamento_id = '3' where id = ?");
+	if($dados->id_andamento == '2'){
+		$consulta = $pdo->prepare("UPDATE pedido_andamento SET idAndamento = 3 WHERE idPedido = ?");
 		$consulta->bindParam(1, $id);
 
 		if($consulta->execute()){
@@ -25,7 +31,7 @@
         }
         
 	}else{
-		$consulta = $pdo->prepare("UPDATE pedido set andamento_id = '2' where id = ?");
+		$consulta = $pdo->prepare("UPDATE pedido_andamento SET idAndamento = 2 WHERE idPedido = ?");
 		$consulta->bindParam(1, $id);
 
 		if($consulta->execute()){

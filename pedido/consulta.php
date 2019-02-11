@@ -26,34 +26,33 @@
 
 			include "./app/conecta.php";
 
-			$sql = "SELECT pe.id AS id, u.nome AS nome_usuario, p.nome AS nome_produto, t.nome AS nome_tamanho, horaPedido, a.situacao 
-                        AS situacao, pe.andamento_id AS andamento_id 
-                        FROM pedido pe
-                        INNER JOIN usuario u ON usuario_id = u.id
-                        INNER JOIN produto p ON produto_id = p.id
-                        INNER JOIN tamanho t ON tamanho_id = t.id
-                        INNER JOIN andamento a ON andamento_id = a.id";
+			$sql = "SELECT 
+						pe.id AS id_pedido,
+						us.nome AS nome_usuario,
+						ta.nome AS nome_tamanho,
+						pr.nome AS nome_produto,
+						p_a.hora AS hora_inicio,
+						an.situacao AS nome_andamento 
+		
+						FROM pedido pe
+						INNER JOIN usuario us ON us.id = pe.usuario_id
+						INNER JOIN tamanho ta ON ta.id = pe.tamanho_id
+						INNER JOIN produto pr ON pr.id = pe.produto_id
+						INNER JOIN pedido_andamento p_a ON p_a.idPedido = pe.id
+						INNER JOIN andamento an ON an.id = p_a.idAndamento";
 			$query = $pdo->prepare($sql);
 			$query->execute();
 
 			while($data = $query->fetch(PDO::FETCH_OBJ)){
-				$id = $data->id;
-                $nome = $data->nome_usuario;
-                //$valor = $data->valor;
-                $horaPedido = $data->horaPedido;
-                $produto = $data->nome_produto;
-                $tamanho = $data->nome_tamanho;
-                $situacao = $data->situacao;
-
 
 				echo "<tr>
-						<td>$id</td>
-						<td>$nome</td>
-						<td>$produto</td>
-						<td>$tamanho</td>
+						<td>$data->id_pedido</td>
+						<td>$data->nome_usuario</td>
+						<td>$data->nome_produto</td>
+						<td>$data->nome_tamanho</td>
 						<td>NULL</td>
-						<td>$horaPedido</td>
-						<td>$situacao</td>
+						<td>$data->hora_inicio</td>
+						<td>$data->nome_andamento</td>
 					</tr>";
 			}
 		?>
