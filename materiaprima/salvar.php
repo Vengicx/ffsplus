@@ -23,8 +23,8 @@
     		$precoUnidade = trim ($_POST["precoUnidade"]);
     	}
 
-    	if(isset($_POST["qtdPedacos"])){
-    		$qtdPedacos = trim ($_POST["qtdPedacos"]);
+    	if(isset($_POST["idtipomateria"])){
+    		$idtipomateria = trim ($_POST["idtipomateria"]);
     	}
 
     	if(isset($_POST["quantidade"])){
@@ -59,42 +59,29 @@
 			}
 		}
 
-		if(empty($nome)){
-            echo "<script>alert('Digite o nome da matéria prima');history.back();</script>";
-            exit;
-
-        }elseif(empty($precoCompra)){
-            echo "<script>alert('Digite o preço de compra');history.back();</script>";
-            exit;
-        }elseif(empty($precoUnidade)){
-            echo "<script>alert('O preço da unidade não foi calculado');history.back();</script>";
-            exit;
-        }elseif(empty($qtdPedacos)){
-            echo "<script>alert('Digite a quantidade dividida da matéria');history.back();</script>";
-            exit;
-        }
+		$precoUnidade = 1;
 
     	if(empty($id)){
-    		$sql = "INSERT INTO materiaprima (id, nome, precoCompra, precoUnidade, qtdPedacos, quantidade) VALUES 
-    		(NULL, :nome, :precoCompra, :precoUnidade, :qtdPedacos, :quantidade)";
+    		$sql = "INSERT INTO materiaprima (id, nome, precoCompra, precoUnidade, idtipomateria, quantidade) VALUES 
+    		(NULL, :nome, :precoCompra, :precoUnidade, :idtipomateria, :quantidade)";
 
     		$consulta = $pdo->prepare($sql);
 
     		$consulta->bindParam(':nome', $nome);
     		$consulta->bindParam(':precoCompra', $precoCompra);
     		$consulta->bindParam(':precoUnidade', $precoUnidade);
-    		$consulta->bindParam(':qtdPedacos', $qtdPedacos);
+    		$consulta->bindParam(':idtipomateria', $idtipomateria);
     		$consulta->bindParam(':quantidade', $quantidade);
 
     	}else{
-    		$sql = "UPDATE materiaprima SET nome = :nome, precoCompra = :precoCompra, precoUnidade = :precoUnidade, qtdPedacos = :qtdPedacos, quantidade = :quantidade WHERE id = :id";
+    		$sql = "UPDATE materiaprima SET nome = :nome, precoCompra = :precoCompra, precoUnidade = :precoUnidade, idtipomateria = :idtipomateria, quantidade = :quantidade WHERE id = :id";
 
     		$consulta = $pdo->prepare($sql);
 
     		$consulta->bindParam(':nome', $nome);
     		$consulta->bindParam(':precoCompra', $precoCompra);
     		$consulta->bindParam(':precoUnidade', $precoUnidade);
-    		$consulta->bindParam(':qtdPedacos', $qtdPedacos);
+    		$consulta->bindParam(':idtipomateria', $idtipomateria);
     		$consulta->bindParam(':quantidade', $quantidade);
     		$consulta->bindParam(':id', $id);
 

@@ -4,7 +4,7 @@
         exit;
     }
 
-    $precoCompra = $precoVenda = $nome = $id = $qtdPedacos = $quantidade = $precoUnidade = $labelId = $labelQtd = "";
+    $precoCompra = $precoVenda = $nome = $id = $idtipomateria = $quantidade = $precoUnidade = $labelId = $labelQtd = "";
 
     if(isset($_GET["id"])){
         $id = trim ($_GET["id"]);
@@ -21,7 +21,7 @@
                 $precoCompra = $dados->precoCompra;
                 $quantidade = $dados->quantidade;
                 $precoUnidade = $dados->precoUnidade;
-                $qtdPedacos = $dados->qtdPedacos;
+                $idtipomateria = $dados->idtipomateria;
 
                 $labelQtd = "readonly";
                 $labelId = "required";
@@ -50,13 +50,28 @@
                 <input type="text" name="precoCompra" class="form-control" onKeyPress="return(moeda(this,'.',',',event))" placeholder="Digite o Preço de Compra" id="precoCompra" value="<?=$precoCompra?>" required>
             </div>
             <div class="form-group col-4">
-                <label for="qtdPedacos">Quantidade por Pedaço:</label>
-                <input type="number" id="qtdPedacos" name="qtdPedacos" value="<?=$qtdPedacos?>" class="form-control" placeholder="Digite a Quantidade" required onkeyup="calcular()" required>
+                <label for="idtipomateria">Tipo Matéria:</label>
+                <select name="idtipomateria" id="idtipomateria" required value="<?=$idtipomateria?>" class="form-control">
+                <?php 
+                    include_once "app/conecta.php";
+                    $sql = "SELECT id, descricao, upper(sigla) as sigla FROM tipomateria";
+                    $consulta = $pdo->prepare($sql);
+                    $consulta->execute();
+
+                    while($dados = $consulta->fetch(PDO::FETCH_OBJ)){
+                        echo "<option name='$dados->id'>$dados->sigla - $dados->descricao</option>";
+                    }
+                ?>
+                </select>
             </div>
             <div class="form-group col-4">
+                <label for="qtdEmbalagem">Quantidade Embalagem</label>
+                <input type="number" name="qtdEmbalagem" class="form-control" placeholder="Digite o Preço de Compra" id="qtdEmbalagem" required>
+            </div>
+            <!-- <div class="form-group col-4">
                 <label for="precoUnidade">Preço por Unidade:</label>
                 <input type="number" name="precoUnidade" id="resultado" onKeyPress="return(moeda(this,'.',',',event))" class="form-control" required readonly value="<?=$precoUnidade?>">
-            </div>
+            </div> -->
             <div class="form-group col-4">
                 <label for="quantidade">Quantidade:</label>
                 <input type="number" name="quantidade" class="form-control" <?=$labelQtd?> value="<?=$quantidade?>">
@@ -80,8 +95,8 @@
 
      function calcular(){
         var precoCompra = parseInt(document.getElementById('precoCompra').value);
-        var qtdPedacos = parseInt(document.getElementById('qtdPedacos').value);
-        var preco = precoCompra / qtdPedacos;
+        var idtipomateria = parseInt(document.getElementById('idtipomateria').value);
+        var preco = precoCompra / idtipomateria;
         var resultado = parseFloat(document.getElementById('resultado').value = preco.toFixed(2));
         
     }
